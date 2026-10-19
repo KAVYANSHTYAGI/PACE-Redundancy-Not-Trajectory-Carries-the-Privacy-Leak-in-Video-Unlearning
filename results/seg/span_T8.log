@@ -1,0 +1,20 @@
+[protocol] T=8 stride=2 (~1.0s span) attacker=mamba phys_bs=2 accum=2 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 29.72+/-0.73  AUC 73.92  IoU* 21.72  IoU@.5 13.82  posrate  5.80  cons 60.95  loss 0.3500
+  oracle_FLOOR     shuffled : AP 30.43+/-0.13  AUC 74.00  IoU* 22.06  IoU@.5 15.92  posrate  6.53  cons 56.32  loss 0.3600
+  oracle_FLOOR     SYNERGY  : dAP -0.71 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.66+/-0.22  AUC 99.15  IoU* 82.11  IoU@.5 81.62  posrate 13.00  cons 84.12  loss 0.0400
+  original         shuffled : AP 93.51+/-0.81  AUC 99.16  IoU* 82.03  IoU@.5 81.06  posrate 13.23  cons 71.14  loss 0.0400
+  original         SYNERGY  : dAP +0.15 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 23.64+/-1.05  AUC 71.30  IoU* 19.09  IoU@.5  0.00  posrate  0.00  cons 23.57  loss 0.3500
+  ADVR-T           shuffled : AP 24.58+/-0.01  AUC 71.29  IoU* 19.44  IoU@.5  1.03  posrate  0.27  cons 33.27  loss 0.3800
+  ADVR-T           SYNERGY  : dAP -0.94 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 23.62+/-0.26  AUC 71.01  IoU* 19.34  IoU@.5  0.00  posrate  0.00  cons 64.93  loss 0.3500
+  ADVR-P           shuffled : AP 21.49+/-0.28  AUC 68.85  IoU* 17.78  IoU@.5  0.02  posrate  0.01  cons 34.68  loss 0.3800
+  ADVR-P           SYNERGY  : dAP +2.13 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 29.72+/-0.73  -> leaks iff AP > 31.18
+  original         LEAK  AP 93.66  synergy +0.15
+  ADVR-T           safe  AP 23.64  synergy -0.94
+  ADVR-P           safe  AP 23.62  synergy +2.13
+
+wrote results/seg/zoo_mamba_T8_s2_person.json

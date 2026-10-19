@@ -1,0 +1,47 @@
+{
+  "ADVR-P": {
+    "ordered": {
+      "attacker_AP": 17.13,
+      "attacker_AP_std": 3.46,
+      "attacker_AUC": 63.33,
+      "attacker_AUC_std": 6.77,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 15.75,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": NaN,
+      "final_train_loss": 0.37
+    },
+    "shuffled": {
+      "attacker_AP": 18.18,
+      "attacker_AP_std": 1.3,
+      "attacker_AUC": 65.89,
+      "attacker_AUC_std": 1.48,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 16.4,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": 50.28,
+      "final_train_loss": 0.38
+    },
+    "synergy_AP": -1.05,
+    "frame": {
+      "attacker_AP": 12.33,
+      "attacker_AUC": 60.33,
+      "attacker_IoU": 6.81,
+      "attacker_IoU_best": 12.51,
+      "attacker_pos_rate": 12.78
+    }
+  },
+  "_config": {
+    "clip_len": 16,
+    "frame_stride": 2,
+    "span_seconds": 2.07,
+    "steps": 500,
+    "eff_clips": 4,
+    "phys_bs": 1,
+    "accum": 4,
+    "n_trials": 2,
+    "n_eval_clips": 800,
+    "n_train_clips": 4000,
+    "temporal_kind": "conv3d"
+  }
+}

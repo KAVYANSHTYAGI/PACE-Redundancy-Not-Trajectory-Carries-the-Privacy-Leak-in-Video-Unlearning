@@ -1,0 +1,5 @@
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[NegGrad] training with {'epochs': 1, 'lr': 0.0001}
+[NegGrad] DONE 95.0min -> checkpoints/unlearned_bl_NegGrad_s1_cls60.pth
+[SCRUB] training with {'epochs': 2, 'lr': 0.0005, 'msteps': 1}
+[SCRUB] DONE 400.1min -> checkpoints/unlearned_bl_SCRUB_s1_cls60.pth

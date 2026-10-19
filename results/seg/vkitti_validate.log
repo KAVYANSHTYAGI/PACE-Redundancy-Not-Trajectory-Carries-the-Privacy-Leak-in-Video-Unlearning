@@ -1,0 +1,6 @@
+car_only train frames: 23171 time 257.25963401794434
+car_only val frames: 16740 time 143.10751366615295
+VKittiUnlearn len: 23171 time 0.13456153869628906
+unlearn sample: torch.Size([3, 512, 512]) torch.Size([512, 512]) torch.Size([512, 512])
+orig has car: True merged has car: False
+VALIDATION OK

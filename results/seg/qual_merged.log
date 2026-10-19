@@ -1,0 +1,9 @@
+[person] well-covered train clips: 200/1200 scanned
+[person] original: prob min 0.000 max 1.000 mean 0.548
+[person] RL: prob min 0.000 max 0.997 mean 0.711
+[person] SCRUB: prob min 0.000 max 0.999 mean 0.542
+[person] SalUn: prob min 0.000 max 0.968 mean 0.584
+[person] PACE-T: prob min 0.003 max 0.872 mean 0.211
+[person] PACE: prob min 0.001 max 0.534 mean 0.100
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.008480080393295291..1.0000000003394733].
+wrote paper/figures/qualitative_merged.png

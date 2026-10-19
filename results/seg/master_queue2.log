@@ -1,0 +1,55 @@
+=== T-sweep wrapper confirmed exited, starting DeepSets eval Sun Aug 23 03:34:41 PM IST 2026 ===
+[protocol] T=16 stride=2 (~2.1s span) attacker=deepsets phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 22.73+/-3.18  AUC 66.93  IoU* 17.57  IoU@.5  0.72  posrate  0.19  cons 100.0  loss 0.3400
+  oracle_FLOOR     shuffled : AP 27.36+/-1.73  AUC 69.07  IoU* 20.59  IoU@.5  6.81  posrate  1.88  cons 100.0  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP -4.63 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 86.49+/-1.53  AUC 97.78  IoU* 64.96  IoU@.5 61.27  posrate 10.41  cons 100.0  loss 0.1400
+  original         shuffled : AP 86.93+/-0.88  AUC 97.85  IoU* 64.96  IoU@.5 63.01  posrate 10.31  cons 100.0  loss 0.1300
+  original         SYNERGY  : dAP -0.44 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 39.75+/-0.70  AUC 79.91  IoU* 30.49  IoU@.5 24.60  posrate  8.36  cons 100.0  loss 0.2900
+  ADVR             shuffled : AP 37.83+/-3.56  AUC 78.81  IoU* 28.81  IoU@.5 27.49  posrate 11.94  cons 100.0  loss 0.3300
+  ADVR             SYNERGY  : dAP +1.92 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 16.04+/-0.19  AUC 60.63  IoU* 14.03  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  ADVR-T           shuffled : AP 17.32+/-2.74  AUC 62.39  IoU* 14.53  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3200
+  ADVR-T           SYNERGY  : dAP -1.28 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 20.11+/-0.75  AUC 67.91  IoU* 17.61  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3700
+  ADVR-P           shuffled : AP 18.59+/-2.46  AUC 66.17  IoU* 16.59  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  ADVR-P           SYNERGY  : dAP +1.52 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 22.73+/-3.18  -> leaks iff AP > 29.09
+  original         LEAK  AP 86.49  synergy -0.44
+  ADVR             LEAK  AP 39.75  synergy +1.92
+  ADVR-T           safe  AP 16.04  synergy -1.28
+  ADVR-P           safe  AP 20.11  synergy +1.52
+
+wrote results/seg/zoo_deepsets_T16_s2_person.json
+########## DEEPSETS EVAL DONE Sun Aug 23 08:52:37 PM IST 2026 ##########
+=== DeepSets eval finished, starting 2x2 factorial Sun Aug 23 08:52:37 PM IST 2026 ===
+=== [1/3] train PACE-P (pooled-only: lam_adv=0, lam_pool=1) Sun Aug 23 08:52:37 PM IST 2026 ===
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-P] 45976 train units, epochs=4, clip_len=3
+  saved checkpoints/unlearned_PACE-P-only.pth
+[ADVR-P] trained in 827.6min
+=== [2/3] train PACE-TS (two-sided-only: lam_adv=1, lam_pool=0) Mon Aug 24 10:40:15 AM IST 2026 ===
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-P] 45976 train units, epochs=4, clip_len=3
+  saved checkpoints/unlearned_PACE-TS-only.pth
+[ADVR-P] trained in 827.6min
+=== [3/3] eval all four 2x2 corners under main protocol Tue Aug 25 12:27:55 AM IST 2026 ===
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  ADVR-T           ordered  : AP 21.50+/-0.61  AUC 68.12  IoU* 16.92  IoU@.5  0.05  posrate  0.01  cons 26.52  loss 0.3200
+  ADVR-T           shuffled : AP 20.36+/-2.62  AUC 66.23  IoU* 15.73  IoU@.5  2.06  posrate  0.73  cons 19.3  loss 0.3300
+  ADVR-T           SYNERGY  : dAP +1.14 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  PACE-P-only      ordered  : AP 24.58+/-3.13  AUC 71.77  IoU* 19.37  IoU@.5  3.23  posrate  0.90  cons 60.04  loss 0.3200
+  PACE-P-only      shuffled : AP 24.63+/-1.85  AUC 71.25  IoU* 18.37  IoU@.5  6.10  posrate  1.87  cons 44.29  loss 0.3200
+  PACE-P-only      SYNERGY  : dAP -0.05 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  PACE-TS-only     ordered  : AP 24.09+/-0.63  AUC 71.65  IoU* 19.52  IoU@.5  0.36  posrate  0.13  cons 54.62  loss 0.3500
+  PACE-TS-only     shuffled : AP 23.71+/-4.46  AUC 69.88  IoU* 18.29  IoU@.5  1.01  posrate  0.40  cons 27.62  loss 0.3100
+  PACE-TS-only     SYNERGY  : dAP +0.38 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 21.43+/-2.25  AUC 68.59  IoU* 17.76  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3400
+  ADVR-P           shuffled : AP 20.52+/-0.69  AUC 68.13  IoU* 17.80  IoU@.5  0.12  posrate  0.03  cons 13.34  loss 0.3500
+  ADVR-P           SYNERGY  : dAP +0.91 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+wrote results/seg/zoo_mamba_T16_s2_factorial2x2.json
+########## 2X2 FACTORIAL DONE Tue Aug 25 04:43:53 AM IST 2026 ##########
+########## MASTER QUEUE DONE Tue Aug 25 04:43:53 AM IST 2026 ##########

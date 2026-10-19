@@ -1,0 +1,3 @@
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[SCRUB] training with {'epochs': 2, 'lr': 0.0005, 'msteps': 1}
+[SCRUB] DONE 52.7min -> checkpoints/unlearned_bl_SCRUB_s1_cls48.pth

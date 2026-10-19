@@ -1,0 +1,106 @@
+{
+  "oracle_FLOOR": {
+    "frame": {
+      "AUC_mean": 72.9,
+      "AUC_std": 1.1,
+      "IoU_mean": 18.9
+    },
+    "temporal": {
+      "AUC_mean": 74.0,
+      "AUC_std": 0.5,
+      "IoU_mean": 15.2,
+      "traj_consistency": 90.3
+    }
+  },
+  "original": {
+    "frame": {
+      "AUC_mean": 98.9,
+      "AUC_std": 0.2,
+      "IoU_mean": 77.1
+    },
+    "temporal": {
+      "AUC_mean": 99.2,
+      "AUC_std": 0.1,
+      "IoU_mean": 82.6,
+      "traj_consistency": 90.3
+    }
+  },
+  "DELETE_logitmask": {
+    "frame": {
+      "AUC_mean": 90.6,
+      "AUC_std": 0.9,
+      "IoU_mean": 33.1
+    },
+    "temporal": {
+      "AUC_mean": 93.1,
+      "AUC_std": 0.8,
+      "IoU_mean": 45.3,
+      "traj_consistency": 92.6
+    }
+  },
+  "ADVR": {
+    "frame": {
+      "AUC_mean": 79.7,
+      "AUC_std": 1.1,
+      "IoU_mean": 24.8
+    },
+    "temporal": {
+      "AUC_mean": 85.2,
+      "AUC_std": 1.0,
+      "IoU_mean": 34.4,
+      "traj_consistency": 95.0
+    }
+  },
+  "ADVR-T": {
+    "frame": {
+      "AUC_mean": 68.3,
+      "AUC_std": 2.1,
+      "IoU_mean": 11.3
+    },
+    "temporal": {
+      "AUC_mean": 68.1,
+      "AUC_std": 0.7,
+      "IoU_mean": 2.0,
+      "traj_consistency": 50.2
+    }
+  },
+  "bl_SSD_s1": {
+    "frame": {
+      "AUC_mean": 70.6,
+      "AUC_std": 4.1,
+      "IoU_mean": 8.4
+    },
+    "temporal": {
+      "AUC_mean": 75.3,
+      "AUC_std": 1.6,
+      "IoU_mean": 6.1,
+      "traj_consistency": 65.3
+    }
+  },
+  "bl_SalUn_s1": {
+    "frame": {
+      "AUC_mean": 95.0,
+      "AUC_std": 0.5,
+      "IoU_mean": 54.7
+    },
+    "temporal": {
+      "AUC_mean": 97.0,
+      "AUC_std": 1.0,
+      "IoU_mean": 69.5,
+      "traj_consistency": 90.6
+    }
+  },
+  "bl_DELETE_s1": {
+    "frame": {
+      "AUC_mean": 91.3,
+      "AUC_std": 0.3,
+      "IoU_mean": 44.7
+    },
+    "temporal": {
+      "AUC_mean": 90.6,
+      "AUC_std": 1.1,
+      "IoU_mean": 46.0,
+      "traj_consistency": 94.7
+    }
+  }
+}

@@ -1,0 +1,23 @@
+rendering clip 256, 16 frames
+  original: mean recovered prob 0.547, max 1.000
+  RL: mean recovered prob 0.524, max 0.999
+  SCRUB: mean recovered prob 0.494, max 1.000
+  SalUn: mean recovered prob 0.551, max 0.988
+  PACE-T: mean recovered prob 0.166, max 0.821
+  PACE: mean recovered prob 0.112, max 0.798
+wrote paper/videos/predictions.mp4 and paper/videos/predictions.gif
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.015877711001216592..1.0000000002077494].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.017382922770973024..1.000000000178466].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.007973024704332934..1.0000000001916207].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.007901680491070054..1.000000000366767].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.01738573095702159..1.0000000003756981].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.011851140020215506..1.00000000037244].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.019645232139474562..1.0000000002789406].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.012363917003230118..1.000000000288648].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.015834570052448923..1.0000000000137592].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.015387064416050353..1.000000000006748].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.0164204312641132..1.0000000003181493].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.016699075733343765..1.0000000002988527].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.01863803811877452..1.0000000004081162].
+wrote paper/videos/attack_recovery.mp4 and paper/videos/attack_recovery.gif
+done

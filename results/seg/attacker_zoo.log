@@ -1,0 +1,93 @@
+########## PHASE A: does synergy exist?  2026-07-27 00:55:24 ##########
+===== mamba | T=16 stride=1 =====
+[protocol] T=16 stride=1 (~1.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 29.48+/-0.46  AUC 72.60  IoU* 21.28  IoU@.5 10.88  posrate  3.65  cons 71.75  loss 0.3400
+  oracle_FLOOR     shuffled : AP 28.62+/-2.56  AUC 71.04  IoU* 20.82  IoU@.5 15.65  posrate  7.70  cons 64.85  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP +0.86 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.20+/-0.04  AUC 99.10  IoU* 81.89  IoU@.5 81.58  posrate 12.83  cons 89.92  loss 0.0500
+  original         shuffled : AP 93.21+/-0.21  AUC 99.10  IoU* 81.84  IoU@.5 81.15  posrate 13.17  cons 72.79  loss 0.0400
+  original         SYNERGY  : dAP -0.01 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 29.48+/-0.46  -> leaks iff AP > 30.40
+  original         LEAK  AP 93.20  synergy -0.01
+
+wrote results/seg/zoo_mamba_T16_s1.json
+===== mamba | T=16 stride=2 =====
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 29.72+/-0.43  AUC 72.58  IoU* 22.16  IoU@.5 13.45  posrate  4.73  cons 67.33  loss 0.2800
+  oracle_FLOOR     shuffled : AP 30.15+/-1.70  AUC 73.87  IoU* 21.99  IoU@.5 12.92  posrate  4.19  cons 51.45  loss 0.3300
+  oracle_FLOOR     SYNERGY  : dAP -0.43 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.43+/-0.10  AUC 99.10  IoU* 81.88  IoU@.5 81.66  posrate 12.89  cons 83.62  loss 0.0400
+  original         shuffled : AP 92.97+/-0.24  AUC 99.09  IoU* 81.58  IoU@.5 81.09  posrate 12.96  cons 62.63  loss 0.0400
+  original         SYNERGY  : dAP +0.46 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 29.72+/-0.43  -> leaks iff AP > 30.58
+  original         LEAK  AP 93.43  synergy +0.46
+
+wrote results/seg/zoo_mamba_T16_s2.json
+########## ZOO DONE  2026-07-27 05:06:50 ##########
+########## PHASE B: full zoo @ 2.1s span  2026-07-27 09:50:22 ##########
+===== conv3d | T=16 stride=2 =====
+[protocol] T=16 stride=2 (~2.1s span) attacker=conv3d phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 26.95+/-0.08  AUC 69.60  IoU* 19.58  IoU@.5  1.91  posrate  0.37  cons 57.04  loss 0.3800
+  oracle_FLOOR     shuffled : AP 23.74+/-0.56  AUC 67.51  IoU* 17.90  IoU@.5  0.57  posrate  0.13  cons 54.77  loss 0.3700
+  oracle_FLOOR     SYNERGY  : dAP +3.21 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.79+/-0.17  AUC 99.06  IoU* 82.76  IoU@.5 82.13  posrate 12.95  cons 84.01  loss 0.0500
+  original         shuffled : AP 93.65+/-0.19  AUC 99.02  IoU* 82.56  IoU@.5 81.35  posrate 13.25  cons 64.21  loss 0.0600
+  original         SYNERGY  : dAP +0.14 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 44.51+/-0.00  AUC 82.18  IoU* 31.98  IoU@.5 31.76  posrate 12.54  cons 87.15  loss 0.2900
+  ADVR             shuffled : AP 42.13+/-1.41  AUC 80.26  IoU* 31.12  IoU@.5 30.44  posrate 10.98  cons 83.63  loss 0.2700
+  ADVR             SYNERGY  : dAP +2.38 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 19.58+/-0.29  AUC 64.24  IoU* 15.61  IoU@.5  0.06  posrate  0.03  cons 57.94  loss 0.3600
+  ADVR-T           shuffled : AP 18.95+/-0.09  AUC 65.64  IoU* 15.82  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  ADVR-T           SYNERGY  : dAP +0.63 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 26.95+/-0.08  -> leaks iff AP > 27.11
+  original         LEAK  AP 93.79  synergy +0.14
+  ADVR             LEAK  AP 44.51  synergy +2.38
+  ADVR-T           safe  AP 19.58  synergy +0.63
+
+wrote results/seg/zoo_conv3d_T16_s2.json
+===== convgru | T=16 stride=2 =====
+[protocol] T=16 stride=2 (~2.1s span) attacker=convgru phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 26.54+/-1.16  AUC 73.42  IoU* 20.82  IoU@.5  0.00  posrate  0.00  cons 74.68  loss 0.3800
+  oracle_FLOOR     shuffled : AP 26.75+/-0.42  AUC 73.24  IoU* 20.91  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  oracle_FLOOR     SYNERGY  : dAP -0.21 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 94.98+/-0.20  AUC 99.28  IoU* 83.06  IoU@.5 82.28  posrate 12.95  cons 83.24  loss 0.0300
+  original         shuffled : AP 94.80+/-0.09  AUC 99.28  IoU* 83.03  IoU@.5 82.09  posrate 12.99  cons 61.89  loss 0.0300
+  original         SYNERGY  : dAP +0.18 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 47.22+/-1.73  AUC 84.44  IoU* 34.96  IoU@.5 34.70  posrate 13.59  cons 80.92  loss 0.2800
+  ADVR             shuffled : AP 48.65+/-0.92  AUC 84.62  IoU* 34.35  IoU@.5 34.20  posrate 15.59  cons 57.62  loss 0.2500
+  ADVR             SYNERGY  : dAP -1.43 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 22.45+/-0.11  AUC 69.90  IoU* 17.95  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3700
+  ADVR-T           shuffled : AP 21.85+/-0.38  AUC 69.50  IoU* 17.97  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3500
+  ADVR-T           SYNERGY  : dAP +0.60 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 26.54+/-1.16  -> leaks iff AP > 28.86
+  original         LEAK  AP 94.98  synergy +0.18
+  ADVR             LEAK  AP 47.22  synergy -1.43
+  ADVR-T           safe  AP 22.45  synergy +0.60
+
+wrote results/seg/zoo_convgru_T16_s2.json
+===== mamba | T=16 stride=2 =====
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 28.89+/-0.72  AUC 70.79  IoU* 21.13  IoU@.5 12.01  posrate  4.31  cons 66.27  loss 0.2900
+  oracle_FLOOR     shuffled : AP 30.22+/-1.34  AUC 73.05  IoU* 21.62  IoU@.5 13.14  posrate  4.64  cons 47.71  loss 0.3200
+  oracle_FLOOR     SYNERGY  : dAP -1.33 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 92.94+/-0.14  AUC 99.09  IoU* 81.72  IoU@.5 80.09  posrate 13.60  cons 84.38  loss 0.0400
+  original         shuffled : AP 93.19+/-0.33  AUC 99.08  IoU* 82.05  IoU@.5 81.09  posrate 13.27  cons 63.54  loss 0.0300
+  original         SYNERGY  : dAP -0.25 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 47.70+/-1.52  AUC 83.16  IoU* 34.21  IoU@.5 31.89  posrate  9.75  cons 74.02  loss 0.2200
+  ADVR             shuffled : AP 46.93+/-1.75  AUC 83.44  IoU* 33.70  IoU@.5 32.09  posrate 10.39  cons 58.56  loss 0.2200
+  ADVR             SYNERGY  : dAP +0.77 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 21.33+/-1.39  AUC 68.78  IoU* 17.38  IoU@.5  1.27  posrate  0.40  cons 37.36  loss 0.3600
+  ADVR-T           shuffled : AP 23.44+/-1.05  AUC 70.67  IoU* 18.61  IoU@.5  5.37  posrate  2.44  cons 22.32  loss 0.3700
+  ADVR-T           SYNERGY  : dAP -2.11 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 28.89+/-0.72  -> leaks iff AP > 30.33
+  original         LEAK  AP 92.94  synergy -0.25
+  ADVR             LEAK  AP 47.70  synergy +0.77
+  ADVR-T           safe  AP 21.33  synergy -2.11
+
+wrote results/seg/zoo_mamba_T16_s2.json
+########## ZOO DONE  2026-07-27 22:40:24 ##########

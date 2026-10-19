@@ -1,0 +1,140 @@
+{
+  "oracle_FLOOR": {
+    "ordered": {
+      "attacker_AP": 30.82,
+      "attacker_AP_std": 0.14,
+      "attacker_AUC": 72.63,
+      "attacker_AUC_std": 0.39,
+      "attacker_IoU": 9.94,
+      "attacker_IoU_best": 21.25,
+      "attacker_pos_rate": 2.79,
+      "traj_consistency": 62.09,
+      "final_train_loss": 0.32
+    },
+    "shuffled": {
+      "attacker_AP": 31.28,
+      "attacker_AP_std": 1.68,
+      "attacker_AUC": 73.23,
+      "attacker_AUC_std": 0.87,
+      "attacker_IoU": 6.38,
+      "attacker_IoU_best": 22.27,
+      "attacker_pos_rate": 1.34,
+      "traj_consistency": 28.55,
+      "final_train_loss": 0.3
+    },
+    "synergy_AP": -0.46
+  },
+  "original": {
+    "ordered": {
+      "attacker_AP": 93.11,
+      "attacker_AP_std": 0.47,
+      "attacker_AUC": 99.02,
+      "attacker_AUC_std": 0.11,
+      "attacker_IoU": 81.18,
+      "attacker_IoU_best": 81.47,
+      "attacker_pos_rate": 12.93,
+      "traj_consistency": 83.96,
+      "final_train_loss": 0.05
+    },
+    "shuffled": {
+      "attacker_AP": 93.03,
+      "attacker_AP_std": 0.05,
+      "attacker_AUC": 99.07,
+      "attacker_AUC_std": 0.02,
+      "attacker_IoU": 80.77,
+      "attacker_IoU_best": 81.87,
+      "attacker_pos_rate": 13.35,
+      "traj_consistency": 63.36,
+      "final_train_loss": 0.05
+    },
+    "synergy_AP": 0.08
+  },
+  "ADVR": {
+    "ordered": {
+      "attacker_AP": 49.15,
+      "attacker_AP_std": 2.25,
+      "attacker_AUC": 83.61,
+      "attacker_AUC_std": 0.71,
+      "attacker_IoU": 34.8,
+      "attacker_IoU_best": 35.02,
+      "attacker_pos_rate": 12.26,
+      "traj_consistency": 76.52,
+      "final_train_loss": 0.23
+    },
+    "shuffled": {
+      "attacker_AP": 47.83,
+      "attacker_AP_std": 0.86,
+      "attacker_AUC": 84.03,
+      "attacker_AUC_std": 0.82,
+      "attacker_IoU": 32.44,
+      "attacker_IoU_best": 34.48,
+      "attacker_pos_rate": 17.4,
+      "traj_consistency": 67.87,
+      "final_train_loss": 0.24
+    },
+    "synergy_AP": 1.32
+  },
+  "ADVR-T": {
+    "ordered": {
+      "attacker_AP": 21.28,
+      "attacker_AP_std": 2.34,
+      "attacker_AUC": 68.22,
+      "attacker_AUC_std": 2.2,
+      "attacker_IoU": 0.2,
+      "attacker_IoU_best": 17.41,
+      "attacker_pos_rate": 0.1,
+      "traj_consistency": 53.65,
+      "final_train_loss": 0.33
+    },
+    "shuffled": {
+      "attacker_AP": 20.29,
+      "attacker_AP_std": 0.11,
+      "attacker_AUC": 67.17,
+      "attacker_AUC_std": 0.45,
+      "attacker_IoU": 0.04,
+      "attacker_IoU_best": 16.64,
+      "attacker_pos_rate": 0.01,
+      "traj_consistency": 7.64,
+      "final_train_loss": 0.34
+    },
+    "synergy_AP": 0.99
+  },
+  "ADVR-P": {
+    "ordered": {
+      "attacker_AP": 18.79,
+      "attacker_AP_std": 1.23,
+      "attacker_AUC": 65.89,
+      "attacker_AUC_std": 3.04,
+      "attacker_IoU": 0.07,
+      "attacker_IoU_best": 16.27,
+      "attacker_pos_rate": 0.02,
+      "traj_consistency": 23.53,
+      "final_train_loss": 0.35
+    },
+    "shuffled": {
+      "attacker_AP": 21.71,
+      "attacker_AP_std": 0.8,
+      "attacker_AUC": 68.99,
+      "attacker_AUC_std": 0.38,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 17.72,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": 21.11,
+      "final_train_loss": 0.34
+    },
+    "synergy_AP": -2.92
+  },
+  "_config": {
+    "clip_len": 16,
+    "frame_stride": 2,
+    "span_seconds": 2.07,
+    "steps": 500,
+    "eff_clips": 4,
+    "phys_bs": 1,
+    "accum": 4,
+    "n_trials": 2,
+    "n_eval_clips": 800,
+    "n_train_clips": 4000,
+    "temporal_kind": "mamba"
+  }
+}

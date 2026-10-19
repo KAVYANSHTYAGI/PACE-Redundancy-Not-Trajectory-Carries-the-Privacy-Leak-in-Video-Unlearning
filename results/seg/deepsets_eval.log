@@ -1,0 +1,25 @@
+[protocol] T=16 stride=2 (~2.1s span) attacker=deepsets phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 22.73+/-3.18  AUC 66.93  IoU* 17.57  IoU@.5  0.72  posrate  0.19  cons 100.0  loss 0.3400
+  oracle_FLOOR     shuffled : AP 27.36+/-1.73  AUC 69.07  IoU* 20.59  IoU@.5  6.81  posrate  1.88  cons 100.0  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP -4.63 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 86.49+/-1.53  AUC 97.78  IoU* 64.96  IoU@.5 61.27  posrate 10.41  cons 100.0  loss 0.1400
+  original         shuffled : AP 86.93+/-0.88  AUC 97.85  IoU* 64.96  IoU@.5 63.01  posrate 10.31  cons 100.0  loss 0.1300
+  original         SYNERGY  : dAP -0.44 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 39.75+/-0.70  AUC 79.91  IoU* 30.49  IoU@.5 24.60  posrate  8.36  cons 100.0  loss 0.2900
+  ADVR             shuffled : AP 37.83+/-3.56  AUC 78.81  IoU* 28.81  IoU@.5 27.49  posrate 11.94  cons 100.0  loss 0.3300
+  ADVR             SYNERGY  : dAP +1.92 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 16.04+/-0.19  AUC 60.63  IoU* 14.03  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  ADVR-T           shuffled : AP 17.32+/-2.74  AUC 62.39  IoU* 14.53  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3200
+  ADVR-T           SYNERGY  : dAP -1.28 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 20.11+/-0.75  AUC 67.91  IoU* 17.61  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3700
+  ADVR-P           shuffled : AP 18.59+/-2.46  AUC 66.17  IoU* 16.59  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  ADVR-P           SYNERGY  : dAP +1.52 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 22.73+/-3.18  -> leaks iff AP > 29.09
+  original         LEAK  AP 86.49  synergy -0.44
+  ADVR             LEAK  AP 39.75  synergy +1.92
+  ADVR-T           safe  AP 16.04  synergy -1.28
+  ADVR-P           safe  AP 20.11  synergy +1.52
+
+wrote results/seg/zoo_deepsets_T16_s2_person.json
+########## DEEPSETS EVAL DONE Sun Aug 23 08:52:37 PM IST 2026 ##########

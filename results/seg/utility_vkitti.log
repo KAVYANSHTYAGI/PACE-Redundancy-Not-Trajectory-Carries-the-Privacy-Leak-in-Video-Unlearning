@@ -1,0 +1,13 @@
+oracle_FLOOR           car_IoU   0.0  retain_mIoU  45.0  mIoU  41.2
+original               car_IoU  82.8  retain_mIoU  50.1  mIoU  52.8
+bl_FT_s1_vkitti        car_IoU   0.0  retain_mIoU  30.9  mIoU  28.4
+bl_NegGrad_s1_vkitti   car_IoU   0.0  retain_mIoU   1.8  mIoU   1.6
+bl_NegGrad+_s1_vkitti  car_IoU   0.0  retain_mIoU   4.9  mIoU   4.5
+bl_RL_s1_vkitti        car_IoU   0.0  retain_mIoU  31.7  mIoU  29.0
+bl_SalUn_s1_vkitti     car_IoU   0.0  retain_mIoU  32.2  mIoU  29.5
+bl_SSD_s1_vkitti       car_IoU   0.0  retain_mIoU   1.8  mIoU   1.6
+bl_SCRUB_s1_vkitti     car_IoU  10.9  retain_mIoU  44.7  mIoU  41.9
+bl_DELETE_s1_vkitti    car_IoU   0.0  retain_mIoU  32.2  mIoU  29.5
+TAE_vkitti             car_IoU   2.2  retain_mIoU  21.1  mIoU  19.6
+PACE_vkitti            car_IoU   0.0  retain_mIoU   7.6  mIoU   6.9
+wrote results/seg/utility_vkitti.json

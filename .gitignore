@@ -1,0 +1,18 @@
+# Datasets (public, licensed separately; see README for download instructions)
+data/
+
+# Trained model weights (regenerate via scripts/, or see README for release links)
+checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Anything explicitly marked local/scratch
+*.tmp

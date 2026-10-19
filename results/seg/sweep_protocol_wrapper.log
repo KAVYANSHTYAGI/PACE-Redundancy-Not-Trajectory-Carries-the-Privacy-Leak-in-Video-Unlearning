@@ -1,0 +1,33 @@
+=========== CLIP_LEN=3  2026-07-26 23:34:37 ===========
+[protocol] T=3 phys_bs=4 accum=1 (eff 4 clips) steps=500 trials=2 | train 6000 clips / eval 1000 clips
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  oracle_FLOOR     ordered  : AP 26.99+/-0.18  AUC 72.43  IoU* 19.99  IoU@.5  0.51  posrate  0.13  cons 0.0  loss 0.3400
+  oracle_FLOOR     shuffled : AP 26.77+/-0.14  AUC 72.87  IoU* 20.61  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP +0.22 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  oracle_FLOOR     frame    : AP 24.73  AUC 74.77  IoU* 20.91
+  original         ordered  : AP 94.94+/-0.02  AUC 99.31  IoU* 83.78  IoU@.5 83.35  posrate 12.47  cons 87.6  loss 0.0400
+  original         shuffled : AP 94.94+/-0.28  AUC 99.27  IoU* 83.83  IoU@.5 83.23  posrate 12.52  cons 86.49  loss 0.0400
+  original         SYNERGY  : dAP +0.00 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         frame    : AP 91.56  AUC 98.94  IoU* 77.07
+  ADVR             ordered  : AP 45.26+/-0.11  AUC 82.69  IoU* 33.72  IoU@.5 33.47  posrate 13.39  cons 94.76  loss 0.2800
+  ADVR             shuffled : AP 45.35+/-0.15  AUC 83.01  IoU* 33.40  IoU@.5 33.20  posrate 14.90  cons 94.63  loss 0.2700
+  ADVR             SYNERGY  : dAP -0.09 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             frame    : AP 29.44  AUC 81.70  IoU* 26.59
+  ADVR-T           ordered  : AP 21.26+/-0.61  AUC 69.81  IoU* 17.92  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3800
+  ADVR-T           shuffled : AP 22.62+/-0.64  AUC 70.01  IoU* 17.98  IoU@.5  1.78  posrate  0.55  cons 74.59  loss 0.3400
+  ADVR-T           SYNERGY  : dAP -1.36 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           frame    : AP 16.42  AUC 68.24  IoU* 15.39
+  bl_SalUn_s1      ordered  : AP 84.74+/-0.03  AUC 97.61  IoU* 68.05  IoU@.5 66.68  posrate 13.94  cons 91.22  loss 0.1200
+  bl_SalUn_s1      shuffled : AP 83.54+/-0.49  AUC 97.44  IoU* 67.70  IoU@.5 66.91  posrate 13.77  cons 92.66  loss 0.1200
+  bl_SalUn_s1      SYNERGY  : dAP +1.20 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SalUn_s1      frame    : AP 49.27  AUC 92.56  IoU* 47.21
+
+floor(ordered) AP 26.99+/-0.18  -> leaks iff AP > 27.35
+  original         LEAK  AP 94.94  synergy +0.00
+  ADVR             LEAK  AP 45.26  synergy -0.09
+  ADVR-T           safe  AP 21.26  synergy -1.36
+  bl_SalUn_s1      LEAK  AP 84.74  synergy +1.20
+
+wrote results/seg/protocol_T3.json
+=========== CLIP_LEN=2  2026-07-27 00:54:16 ===========
+[protocol] T=2 stride=1 (~0.1s span) attacker=conv3d phys_bs=4 accum=1 (eff 4 clips) steps=500 trials=2 | train 6000 clips / eval 1000 clips

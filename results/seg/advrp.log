@@ -1,0 +1,31 @@
+=========== train ADVR-P  2026-07-30 16:19:19 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-P] 45976 train units, epochs=4, clip_len=3
+  saved checkpoints/unlearned_ADVR-P.pth
+[ADVR-P] trained in 853.5min
+=========== eval vs oracle_FLOOR/original/ADVR/ADVR-T under mamba, T=16/stride=2  2026-07-31 06:32:50 ===========
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 30.82+/-0.14  AUC 72.63  IoU* 21.25  IoU@.5  9.94  posrate  2.79  cons 62.09  loss 0.3200
+  oracle_FLOOR     shuffled : AP 31.28+/-1.68  AUC 73.23  IoU* 22.27  IoU@.5  6.38  posrate  1.34  cons 28.55  loss 0.3000
+  oracle_FLOOR     SYNERGY  : dAP -0.46 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.11+/-0.47  AUC 99.02  IoU* 81.47  IoU@.5 81.18  posrate 12.93  cons 83.96  loss 0.0500
+  original         shuffled : AP 93.03+/-0.05  AUC 99.07  IoU* 81.87  IoU@.5 80.77  posrate 13.35  cons 63.36  loss 0.0500
+  original         SYNERGY  : dAP +0.08 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 49.15+/-2.25  AUC 83.61  IoU* 35.02  IoU@.5 34.80  posrate 12.26  cons 76.52  loss 0.2300
+  ADVR             shuffled : AP 47.83+/-0.86  AUC 84.03  IoU* 34.48  IoU@.5 32.44  posrate 17.40  cons 67.87  loss 0.2400
+  ADVR             SYNERGY  : dAP +1.32 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 21.28+/-2.34  AUC 68.22  IoU* 17.41  IoU@.5  0.20  posrate  0.10  cons 53.65  loss 0.3300
+  ADVR-T           shuffled : AP 20.29+/-0.11  AUC 67.17  IoU* 16.64  IoU@.5  0.04  posrate  0.01  cons 7.64  loss 0.3400
+  ADVR-T           SYNERGY  : dAP +0.99 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 18.79+/-1.23  AUC 65.89  IoU* 16.27  IoU@.5  0.07  posrate  0.02  cons 23.53  loss 0.3500
+  ADVR-P           shuffled : AP 21.71+/-0.80  AUC 68.99  IoU* 17.72  IoU@.5  0.00  posrate  0.00  cons 21.11  loss 0.3400
+  ADVR-P           SYNERGY  : dAP -2.92 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 30.82+/-0.14  -> leaks iff AP > 31.10
+  original         LEAK  AP 93.11  synergy +0.08
+  ADVR             LEAK  AP 49.15  synergy +1.32
+  ADVR-T           safe  AP 21.28  synergy +0.99
+  ADVR-P           safe  AP 18.79  synergy -2.92
+
+wrote results/seg/zoo_mamba_T16_s2_advrp.json
+########## ADVR-P RUN DONE  2026-07-31 11:54:39 ##########

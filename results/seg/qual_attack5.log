@@ -1,0 +1,8 @@
+[person] original: prob min 0.000 max 0.997 mean 0.625
+[person] RL: prob min 0.000 max 0.962 mean 0.605
+[person] SCRUB: prob min 0.002 max 0.998 mean 0.512
+[person] SalUn: prob min 0.000 max 0.986 mean 0.673
+[person] PACE-T: prob min 0.016 max 0.578 mean 0.262
+[person] PACE: prob min 0.048 max 0.579 mean 0.309
+[car] original: prob min 0.000 max 0.001 mean 0.000
+[car] RL: prob min 0.000 max 0.070 mean 0.005

@@ -1,0 +1,62 @@
+{
+  "oracle_FLOOR": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 44.95575172804281,
+    "mIoU": 41.209439084039246
+  },
+  "original": {
+    "car_IoU": 82.75651348226025,
+    "retain_mIoU": 50.0580835958626,
+    "mIoU": 52.7829527530624
+  },
+  "bl_FT_s1_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 30.949424004621346,
+    "mIoU": 28.37030533756957
+  },
+  "bl_NegGrad_s1_vkitti": {
+    "car_IoU": 1.4964527200456521e-05,
+    "retain_mIoU": 1.7917623730435508,
+    "mIoU": 1.6424500890005218
+  },
+  "bl_NegGrad+_s1_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 4.863332107217588,
+    "mIoU": 4.458054431616123
+  },
+  "bl_RL_s1_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 31.66768216964359,
+    "mIoU": 29.02870865550663
+  },
+  "bl_SalUn_s1_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 32.210244080031096,
+    "mIoU": 29.526057073361837
+  },
+  "bl_SSD_s1_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 1.762286238236861,
+    "mIoU": 1.6154290517171224
+  },
+  "bl_SCRUB_s1_vkitti": {
+    "car_IoU": 10.944483977862632,
+    "retain_mIoU": 44.74038719520582,
+    "mIoU": 41.92406192709388
+  },
+  "bl_DELETE_s1_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 32.167806512087495,
+    "mIoU": 29.487155969413536
+  },
+  "TAE_vkitti": {
+    "car_IoU": 2.2199868523200017,
+    "retain_mIoU": 21.143691699179747,
+    "mIoU": 19.566716295274766
+  },
+  "PACE_vkitti": {
+    "car_IoU": 0.0,
+    "retain_mIoU": 7.5553030078777255,
+    "mIoU": 6.925694423887915
+  }
+}

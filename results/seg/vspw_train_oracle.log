@@ -1,0 +1,8 @@
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[vspw_oracle_deeplabv3r50_cls60] 198242 train frames, 24502 val frames, 4 epochs, bs6 res512
+[vspw_oracle_deeplabv3r50_cls60] epoch 1/4 loss 2.187 lr 0.00772
+[vspw_oracle_deeplabv3r50_cls60] epoch 2/4 loss 1.252 lr 0.00536 | person_IoU 0.0 retain_mIoU 27.6 mIoU 27.4
+[vspw_oracle_deeplabv3r50_cls60] epoch 3/4 loss 0.861 lr 0.00287
+[vspw_oracle_deeplabv3r50_cls60] epoch 4/4 loss 0.625 lr 0.00000 | person_IoU 0.0 retain_mIoU 30.9 mIoU 30.6
+[vspw_oracle_deeplabv3r50_cls60] DONE 10.1h -> checkpoints/vspw_oracle_deeplabv3r50_cls60.pth
+[vspw_oracle_deeplabv3r50_cls60] val person_IoU 0.0 retain_mIoU 30.9 mIoU 30.6

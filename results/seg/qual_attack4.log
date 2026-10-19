@@ -1,0 +1,9 @@
+[person] original: prob min 0.000 max 0.998 mean 0.650
+[person] RL: prob min 0.002 max 0.952 mean 0.624
+[person] PACE-T: prob min 0.044 max 0.425 mean 0.247
+[person] PACE: prob min 0.038 max 0.442 mean 0.247
+[car] original: prob min 0.000 max 0.002 mean 0.000
+[car] RL: prob min 0.000 max 0.042 mean 0.008
+[car] PACE-T: prob min 0.000 max 0.030 mean 0.003
+[car] PACE: prob min 0.000 max 0.685 mean 0.013
+wrote paper/figures/qualitative_attack.png

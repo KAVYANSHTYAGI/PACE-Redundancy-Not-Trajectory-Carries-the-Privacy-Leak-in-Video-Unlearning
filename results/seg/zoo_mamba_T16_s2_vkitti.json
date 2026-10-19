@@ -1,0 +1,315 @@
+{
+  "oracle_FLOOR": {
+    "ordered": {
+      "attacker_AP": 50.71,
+      "attacker_AP_std": 0.71,
+      "attacker_AUC": 91.7,
+      "attacker_AUC_std": 1.62,
+      "attacker_IoU": 37.01,
+      "attacker_IoU_best": 37.03,
+      "attacker_pos_rate": 8.33,
+      "traj_consistency": 66.79,
+      "final_train_loss": 0.06
+    },
+    "shuffled": {
+      "attacker_AP": 55.21,
+      "attacker_AP_std": 3.58,
+      "attacker_AUC": 93.0,
+      "attacker_AUC_std": 0.59,
+      "attacker_IoU": 40.12,
+      "attacker_IoU_best": 40.25,
+      "attacker_pos_rate": 8.29,
+      "traj_consistency": 42.96,
+      "final_train_loss": 0.06
+    },
+    "synergy_AP": -4.5
+  },
+  "original": {
+    "ordered": {
+      "attacker_AP": 88.67,
+      "attacker_AP_std": 1.27,
+      "attacker_AUC": 99.48,
+      "attacker_AUC_std": 0.06,
+      "attacker_IoU": 79.6,
+      "attacker_IoU_best": 80.08,
+      "attacker_pos_rate": 7.7,
+      "traj_consistency": 66.21,
+      "final_train_loss": 0.01
+    },
+    "shuffled": {
+      "attacker_AP": 89.18,
+      "attacker_AP_std": 0.77,
+      "attacker_AUC": 99.5,
+      "attacker_AUC_std": 0.02,
+      "attacker_IoU": 79.54,
+      "attacker_IoU_best": 80.27,
+      "attacker_pos_rate": 7.75,
+      "traj_consistency": 43.87,
+      "final_train_loss": 0.01
+    },
+    "synergy_AP": -0.51
+  },
+  "bl_FT_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 41.43,
+      "attacker_AP_std": 2.32,
+      "attacker_AUC": 92.48,
+      "attacker_AUC_std": 0.26,
+      "attacker_IoU": 28.04,
+      "attacker_IoU_best": 31.63,
+      "attacker_pos_rate": 18.24,
+      "traj_consistency": 76.36,
+      "final_train_loss": 0.05
+    },
+    "shuffled": {
+      "attacker_AP": 31.19,
+      "attacker_AP_std": 2.69,
+      "attacker_AUC": 91.23,
+      "attacker_AUC_std": 0.51,
+      "attacker_IoU": 25.38,
+      "attacker_IoU_best": 27.99,
+      "attacker_pos_rate": 21.83,
+      "traj_consistency": 66.61,
+      "final_train_loss": 0.05
+    },
+    "synergy_AP": 10.24
+  },
+  "bl_NegGrad_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 9.67,
+      "attacker_AP_std": 1.41,
+      "attacker_AUC": 59.97,
+      "attacker_AUC_std": 4.37,
+      "attacker_IoU": 3.55,
+      "attacker_IoU_best": 8.09,
+      "attacker_pos_rate": 12.39,
+      "traj_consistency": 29.02,
+      "final_train_loss": 0.17
+    },
+    "shuffled": {
+      "attacker_AP": 9.31,
+      "attacker_AP_std": 0.01,
+      "attacker_AUC": 55.54,
+      "attacker_AUC_std": 0.93,
+      "attacker_IoU": 2.42,
+      "attacker_IoU_best": 7.98,
+      "attacker_pos_rate": 0.36,
+      "traj_consistency": 8.08,
+      "final_train_loss": 0.19
+    },
+    "synergy_AP": 0.36
+  },
+  "bl_NegGrad+_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 33.57,
+      "attacker_AP_std": 6.4,
+      "attacker_AUC": 89.45,
+      "attacker_AUC_std": 1.34,
+      "attacker_IoU": 14.19,
+      "attacker_IoU_best": 24.85,
+      "attacker_pos_rate": 2.82,
+      "traj_consistency": 46.44,
+      "final_train_loss": 0.13
+    },
+    "shuffled": {
+      "attacker_AP": 30.18,
+      "attacker_AP_std": 1.28,
+      "attacker_AUC": 88.5,
+      "attacker_AUC_std": 0.6,
+      "attacker_IoU": 20.3,
+      "attacker_IoU_best": 23.35,
+      "attacker_pos_rate": 6.26,
+      "traj_consistency": 41.58,
+      "final_train_loss": 0.13
+    },
+    "synergy_AP": 3.39
+  },
+  "bl_RL_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 89.17,
+      "attacker_AP_std": 1.08,
+      "attacker_AUC": 99.01,
+      "attacker_AUC_std": 0.03,
+      "attacker_IoU": 68.29,
+      "attacker_IoU_best": 68.95,
+      "attacker_pos_rate": 7.54,
+      "traj_consistency": 69.83,
+      "final_train_loss": 0.04
+    },
+    "shuffled": {
+      "attacker_AP": 90.52,
+      "attacker_AP_std": 0.19,
+      "attacker_AUC": 99.24,
+      "attacker_AUC_std": 0.09,
+      "attacker_IoU": 70.93,
+      "attacker_IoU_best": 71.45,
+      "attacker_pos_rate": 7.47,
+      "traj_consistency": 46.57,
+      "final_train_loss": 0.03
+    },
+    "synergy_AP": -1.35
+  },
+  "bl_SalUn_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 92.42,
+      "attacker_AP_std": 0.49,
+      "attacker_AUC": 99.33,
+      "attacker_AUC_std": 0.04,
+      "attacker_IoU": 74.18,
+      "attacker_IoU_best": 74.61,
+      "attacker_pos_rate": 6.64,
+      "traj_consistency": 65.3,
+      "final_train_loss": 0.02
+    },
+    "shuffled": {
+      "attacker_AP": 92.64,
+      "attacker_AP_std": 0.05,
+      "attacker_AUC": 99.34,
+      "attacker_AUC_std": 0.01,
+      "attacker_IoU": 74.49,
+      "attacker_IoU_best": 74.9,
+      "attacker_pos_rate": 6.46,
+      "traj_consistency": 42.33,
+      "final_train_loss": 0.02
+    },
+    "synergy_AP": -0.22
+  },
+  "bl_SSD_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 6.87,
+      "attacker_AP_std": 0.19,
+      "attacker_AUC": 50.22,
+      "attacker_AUC_std": 1.79,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 6.95,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": NaN,
+      "final_train_loss": 0.22
+    },
+    "shuffled": {
+      "attacker_AP": 8.36,
+      "attacker_AP_std": 2.56,
+      "attacker_AUC": 57.25,
+      "attacker_AUC_std": 10.26,
+      "attacker_IoU": 3.74,
+      "attacker_IoU_best": 8.03,
+      "attacker_pos_rate": 2.76,
+      "traj_consistency": 98.33,
+      "final_train_loss": 0.21
+    },
+    "synergy_AP": -1.49
+  },
+  "bl_SCRUB_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 95.66,
+      "attacker_AP_std": 0.95,
+      "attacker_AUC": 99.72,
+      "attacker_AUC_std": 0.04,
+      "attacker_IoU": 82.35,
+      "attacker_IoU_best": 83.08,
+      "attacker_pos_rate": 7.32,
+      "traj_consistency": 67.14,
+      "final_train_loss": 0.01
+    },
+    "shuffled": {
+      "attacker_AP": 95.48,
+      "attacker_AP_std": 0.98,
+      "attacker_AUC": 99.7,
+      "attacker_AUC_std": 0.05,
+      "attacker_IoU": 81.85,
+      "attacker_IoU_best": 82.23,
+      "attacker_pos_rate": 7.3,
+      "traj_consistency": 43.47,
+      "final_train_loss": 0.01
+    },
+    "synergy_AP": 0.18
+  },
+  "bl_DELETE_s1_vkitti": {
+    "ordered": {
+      "attacker_AP": 79.56,
+      "attacker_AP_std": 0.86,
+      "attacker_AUC": 98.61,
+      "attacker_AUC_std": 0.08,
+      "attacker_IoU": 50.68,
+      "attacker_IoU_best": 61.33,
+      "attacker_pos_rate": 12.19,
+      "traj_consistency": 70.99,
+      "final_train_loss": 0.02
+    },
+    "shuffled": {
+      "attacker_AP": 82.56,
+      "attacker_AP_std": 1.81,
+      "attacker_AUC": 98.84,
+      "attacker_AUC_std": 0.1,
+      "attacker_IoU": 55.29,
+      "attacker_IoU_best": 64.35,
+      "attacker_pos_rate": 11.07,
+      "traj_consistency": 49.48,
+      "final_train_loss": 0.02
+    },
+    "synergy_AP": -3.0
+  },
+  "TAE_vkitti": {
+    "ordered": {
+      "attacker_AP": 17.12,
+      "attacker_AP_std": 2.24,
+      "attacker_AUC": 78.71,
+      "attacker_AUC_std": 0.24,
+      "attacker_IoU": 10.68,
+      "attacker_IoU_best": 14.5,
+      "attacker_pos_rate": 5.24,
+      "traj_consistency": 53.61,
+      "final_train_loss": 0.11
+    },
+    "shuffled": {
+      "attacker_AP": 18.58,
+      "attacker_AP_std": 1.45,
+      "attacker_AUC": 81.36,
+      "attacker_AUC_std": 0.44,
+      "attacker_IoU": 12.19,
+      "attacker_IoU_best": 15.6,
+      "attacker_pos_rate": 6.52,
+      "traj_consistency": 33.75,
+      "final_train_loss": 0.12
+    },
+    "synergy_AP": -1.46
+  },
+  "PACE_vkitti": {
+    "ordered": {
+      "attacker_AP": 9.11,
+      "attacker_AP_std": 0.79,
+      "attacker_AUC": 65.97,
+      "attacker_AUC_std": 2.02,
+      "attacker_IoU": 0.08,
+      "attacker_IoU_best": 9.51,
+      "attacker_pos_rate": 0.16,
+      "traj_consistency": 19.86,
+      "final_train_loss": 0.15
+    },
+    "shuffled": {
+      "attacker_AP": 8.13,
+      "attacker_AP_std": 0.62,
+      "attacker_AUC": 62.52,
+      "attacker_AUC_std": 3.98,
+      "attacker_IoU": 0.2,
+      "attacker_IoU_best": 8.94,
+      "attacker_pos_rate": 0.61,
+      "traj_consistency": 22.66,
+      "final_train_loss": 0.16
+    },
+    "synergy_AP": 0.98
+  },
+  "_config": {
+    "clip_len": 16,
+    "frame_stride": 2,
+    "span_seconds": 2.07,
+    "steps": 500,
+    "eff_clips": 4,
+    "phys_bs": 1,
+    "accum": 4,
+    "n_trials": 2,
+    "n_eval_clips": 800,
+    "n_train_clips": 4000,
+    "temporal_kind": "mamba"
+  }
+}

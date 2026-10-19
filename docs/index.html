@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning</title>
+  <meta name="description" content="A video model that has forgotten an object frame by frame can still give it away when you average a few frames. Interactive explanation of the problem and of PACE, our fix.">
+  <meta property="og:title" content="Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning">
+  <meta property="og:description" content="Averaging a few frames recovers an object that a video model appears to have forgotten. PACE removes what averaging finds.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/teaser.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%273%27 fill=%27%23363636%27/%3E%3Crect x=%274%27 y=%274%27 width=%278%27 height=%278%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #363636; --text: #4a4a4a; --muted: #6b6b6b; --line: #dbdbdb; --soft: #f5f5f5;
+      --blue: #3273dc; --red: #b6403b; --green: #2f7d5b; --amber: #a86a12;
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { margin: 0; background: #fff; color: var(--text); line-height: 1.55;
+           font-family: "Noto Sans", "Segoe UI", Helvetica, Arial, sans-serif; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .narrow { max-width: 760px; margin: 0 auto; }
+
+    .hero { padding: 56px 0 8px; text-align: center; }
+    .publication-title { font-family: "Google Sans", "Noto Sans", sans-serif; font-weight: 600;
+      font-size: 2.6rem; line-height: 1.125; color: var(--ink); margin: 0 0 24px; }
+    .authors { font-size: 1.25rem; margin-bottom: 4px; }
+    .venue { font-size: 1.1rem; margin-bottom: 20px; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .button { display: inline-block; background: var(--ink); color: #fff; border-radius: 290486px;
+      padding: 8px 20px; font-size: 1rem; }
+    .button:hover { background: #292929; text-decoration: none; color: #fff; }
+
+    section { padding: 36px 0; }
+    h2 { font-family: "Google Sans", "Noto Sans", sans-serif; font-weight: 600; font-size: 1.9rem;
+      color: var(--ink); text-align: center; margin: 0 0 12px; }
+    .sub { text-align: center; max-width: 760px; margin: 0 auto 24px; }
+    h3 { font-family: "Google Sans", "Noto Sans", sans-serif; font-weight: 600; font-size: 1.2rem;
+      color: var(--ink); margin: 0 0 6px; }
+    p { margin: 0 0 12px; }
+    .small { font-size: .88rem; color: var(--muted); }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; background: #fff; }
+    .card .num { font-family: "Google Sans", sans-serif; font-weight: 600; color: var(--muted); font-size: .85rem;
+      letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* controls */
+    .btnrow { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 16px; }
+    .tab { font: inherit; font-size: .95rem; border: 1px solid var(--line); background: #fff; color: var(--text);
+      padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    .tab:hover { border-color: #b5b5b5; }
+    .tab[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .tab.ours { border-color: var(--blue); }
+    .tab.ours[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); }
+    input[type=range] { width: 100%; accent-color: var(--ink); }
+
+    /* real-clip viewer */
+    .panels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .panel canvas { width: 100%; height: auto; display: block; background: var(--soft); border: 1px solid var(--line); }
+    .panel .cap { font-size: .9rem; margin-top: 6px; }
+    .panel .cap b { color: var(--ink); }
+    .player { display: flex; align-items: center; gap: 14px; margin: 16px 0 6px; }
+    .player .tab { min-width: 76px; }
+    .player input { flex: 1; }
+    .player .frameno { min-width: 92px; text-align: right; font-size: .9rem; color: var(--muted); }
+    .readout { border-left: 3px solid var(--ink); background: var(--soft); padding: 10px 14px; margin-top: 12px; min-height: 4.4em; }
+
+    /* toy demo */
+    .toy { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; align-items: start; }
+    .toy canvas { width: 100%; height: auto; image-rendering: pixelated; border: 1px solid var(--line); display: block; }
+    .toy .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .toy .cap { font-size: .9rem; margin-top: 6px; }
+    .toyctl { max-width: 560px; margin: 16px auto 0; }
+    .toyctl label { display: flex; justify-content: space-between; font-size: .95rem; margin-bottom: 4px; }
+
+    /* paired bars (shuffle test) */
+    .pairs { max-width: 760px; margin: 0 auto; }
+    .pair { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: center; margin: 10px 0; font-size: .92rem; }
+    .pair .name { text-align: right; color: var(--ink); }
+    .bar { position: relative; height: 16px; background: var(--soft); margin: 2px 0; }
+    .bar i { position: absolute; left: 0; top: 0; bottom: 0; display: block; }
+    .bar span { position: absolute; left: 6px; top: -1px; font-size: .78rem; line-height: 16px; color: #fff; mix-blend-mode: normal; }
+    .bar.a i { background: #4b6a88; } .bar.b i { background: #a9bdd0; }
+    .bar.b span { color: #26384a; }
+    .legend { display: flex; gap: 18px; justify-content: center; font-size: .88rem; margin-bottom: 8px; }
+    .sw { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; }
+
+    /* box diagrams */
+    .flow { display: flex; align-items: stretch; gap: 8px; flex-wrap: nowrap; }
+    .box { flex: 1 1 0; border: 1.5px solid var(--ink); border-radius: 4px; padding: 10px 12px; background: #fff; font-size: .9rem; min-width: 0; }
+    .box b { display: block; color: var(--ink); margin-bottom: 2px; }
+    .box.model { background: #eef3fb; border-color: var(--blue); }
+    .box.att { background: #fbf0ef; border-color: var(--red); }
+    .box.pen { background: #f5f5f5; border-color: #8a8a8a; }
+    .box.keep { background: #eef6f1; border-color: var(--green); }
+    .arrow { align-self: center; font-size: 1.4rem; color: var(--muted); flex: 0 0 auto; }
+    .shared { margin-bottom: 18px; }
+    .version { border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; margin-bottom: 16px; }
+    .version header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .version header h3 { margin: 0; font-size: 1.35rem; }
+    .version header span { color: var(--muted); }
+    .version .flow { margin-bottom: 12px; }
+    .version dl { margin: 0; display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; font-size: .95rem; }
+    .version dt { font-weight: 600; color: var(--ink); }
+    .version dd { margin: 0; }
+    .see svg { display: block; margin: 6px auto 0; max-width: 100%; }
+
+    /* results */
+    .restable { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .restable th { text-align: left; font-weight: 600; color: var(--ink); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 8px 10px; vertical-align: bottom; }
+    .restable th small { display: block; font-weight: 400; color: var(--muted); }
+    .restable td { padding: 6px 10px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    .restable tr.group td { background: var(--soft); font-weight: 600; color: var(--ink); font-size: .85rem; }
+    .restable tr.ours td { background: #f2f7ff; }
+    .restable tr:last-child td { border-bottom: 2px solid var(--ink); }
+    .meter { position: relative; height: 18px; background: var(--soft); min-width: 140px; }
+    .meter i { position: absolute; left: 0; top: 0; bottom: 0; display: block; }
+    .meter b { position: absolute; left: 6px; top: 0; line-height: 18px; font-size: .8rem; color: #fff; font-weight: 600; text-shadow: 0 0 2px rgba(0,0,0,.35); }
+    .meter .line { position: absolute; top: -3px; bottom: -3px; width: 0; border-left: 2px solid var(--ink); }
+    .v-leak { color: var(--red); font-weight: 600; }
+    .v-ok { color: var(--green); font-weight: 600; }
+    .v-warn { color: var(--amber); font-weight: 600; }
+    .v-ref { color: var(--muted); font-weight: 600; }
+    .tablewrap { overflow-x: auto; }
+    .takeaway { max-width: 760px; margin: 16px auto 0; background: var(--soft); border-left: 3px solid var(--ink); padding: 10px 14px; }
+
+    .limits { max-width: 760px; margin: 0 auto; }
+    .limits div { padding: 10px 0; border-bottom: 1px solid #eee; }
+    .limits div:last-child { border-bottom: 0; }
+    pre { background: var(--soft); padding: 16px 20px; border-radius: 4px; overflow-x: auto; font-size: .85rem; line-height: 1.45; margin: 0; }
+    details { margin-top: 18px; }
+    details summary { cursor: pointer; color: var(--blue); }
+    .pano { width: min(96vw, 1800px); margin: 28px auto 0; position: relative; left: 50%; transform: translateX(-50%); }
+    .pano video { width: 100%; height: auto; display: block; background: #fff; margin-bottom: 6px; }
+    .panotitle { text-align: center; margin: 0 0 8px; font-size: 1.3rem; }
+    .panocap { text-align: center; font-size: .95rem; color: var(--ink); margin: 10px 0 2px; }
+    .panonote { text-align: center; margin-top: 8px; }
+    footer { padding: 28px 0 48px; font-size: .9rem; color: var(--muted); text-align: center; }
+
+    @media (max-width: 860px) {
+      .pano { display: none; }
+      .cards, .panels, .toy { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .arrow { transform: rotate(90deg); }
+      .version dl { grid-template-columns: 1fr; }
+      .version dt { margin-top: 6px; }
+      .pair { grid-template-columns: 1fr; } .pair .name { text-align: left; }
+      .publication-title { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1 class="publication-title">Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning</h1>
+    <div class="authors"><a href="https://kavyanshtyagi.github.io/">Kavyansh Tyagi</a>, <a href="https://www.paolorusso.org/">Paolo Russo</a></div>
+    <div class="venue">WACV 2027</div>
+    <div class="links">
+      <!-- Add when available:
+      <a class="button" href="PAPER_URL">Paper</a>
+      <a class="button" href="ARXIV_URL">arXiv</a>
+      -->
+      <a class="button" href="https://github.com/KAVYANSHTYAGI/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning">Code</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="cards">
+      <div class="card">
+        <div class="num">The task</div>
+        <h3>Make a video model forget something</h3>
+        <p>A segmentation model labels every pixel of a video: person, car, road, sky. Class unlearning asks it to forget one label, say person, without retraining from scratch, so that the person can no longer be found in what the model outputs.</p>
+      </div>
+      <div class="card">
+        <div class="num">The catch</div>
+        <h3>One frame looks fine, a few frames do not</h3>
+        <p>Looking at one frame at a time, the person is gone. But if you average the model's outputs over about two seconds of video, a faint trace adds up and the person comes back. In our tests nearly every published method that keeps the model usable still leaks this way.</p>
+      </div>
+      <div class="card">
+        <div class="num">Our fix</div>
+        <h3>Train against the averaging attacker</h3>
+        <p>PACE trains the model against an attacker that does exactly this averaging, and adds a rule that stops the model from hiding the trace by freezing it in place. The person stays forgotten even when frames are pooled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Why one frame is not enough</h2>
+    <p class="sub">Each small frame below is mostly noise with a very faint blob in the middle, like a model whose output on any single frame looks clean. Slide to average more frames of the clip.</p>
+    <div class="toy">
+      <div>
+        <div class="strip" id="toyStrip"></div>
+        <div class="cap"><b>Single frames.</b> No blob is visible in any of them.</div>
+      </div>
+      <div>
+        <canvas id="toyOrdered" width="96" height="72" aria-label="Average of the frames in their original order"></canvas>
+        <div class="cap"><b>Average, original order.</b> The blob appears as more frames are added.</div>
+      </div>
+      <div>
+        <canvas id="toyShuffled" width="96" height="72" aria-label="Average of the same frames in shuffled order"></canvas>
+        <div class="cap"><b>Average, shuffled order.</b> Largest pixel difference from the left average: <span id="toyDiff">0.0000</span></div>
+      </div>
+    </div>
+    <div class="toyctl">
+      <label for="toyK"><span>Frames averaged</span><span id="toyKval">1</span></label>
+      <input id="toyK" type="range" min="1" max="16" value="1">
+      <div class="btnrow" style="margin-top:10px"><button class="tab" id="toyReshuffle" type="button">Shuffle again</button></div>
+    </div>
+    <p class="small narrow" style="text-align:center">A toy picture with made-up numbers, not output from our models. It shows why averaging works on a faint but repeated trace, and why it does not care about frame order.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Watch it on a real clip</h2>
+    <p class="sub">One validation clip from VSPW, 16 frames spanning about two seconds. Pick a model. The middle panel is what a frame-by-frame check sees. The right panel is what an attacker recovers by pooling the model's outputs over the clip.</p>
+    <div class="btnrow" id="methodBtns" role="group" aria-label="Choose a model"></div>
+    <div class="panels">
+      <div class="panel"><canvas id="cvReal" width="432" height="250" aria-label="Input frame with the true person region in red"></canvas>
+        <div class="cap"><b>The real frame.</b> Red marks the person.</div></div>
+      <div class="panel"><canvas id="cvPred" width="432" height="250" aria-label="The chosen model's own prediction"></canvas>
+        <div class="cap"><b>What the model predicts.</b> Blue marks pixels it calls person.</div></div>
+      <div class="panel"><canvas id="cvAtt" width="432" height="250" aria-label="What the pooled attacker recovers"></canvas>
+        <div class="cap"><b>What the attacker recovers.</b> Brighter means more sure it is person.</div></div>
+    </div>
+    <div class="player">
+      <button class="tab" id="playBtn" type="button">Pause</button>
+      <input id="frameSlider" type="range" min="0" max="15" value="0" aria-label="Frame">
+      <div class="frameno" id="frameNo">Frame 1 of 16</div>
+    </div>
+    <div class="readout" id="readout" aria-live="polite"></div>
+    <p class="small" style="margin-top:12px">The tiles are small because that is the resolution they were rendered at. This is one clip and one quick attacker run (250 training steps), so it illustrates the effect. The tables further down are the measured result.</p>
+  </div>
+  <div class="pano">
+    <h3 class="panotitle">All models side by side</h3>
+    <div class="panocap">What each model predicts, frame by frame</div>
+    <video id="vidPred" src="assets/videos/pano_predictions.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <div class="panocap">What the attacker recovers by pooling the outputs</div>
+    <video id="vidAtt" src="assets/videos/pano_attack_recovery.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <p class="small panonote">The same clip as above, looping. Generated by <a href="https://github.com/KAVYANSHTYAGI/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/blob/main/scripts/make_qual_video.py">scripts/make_qual_video.py</a>.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Is it motion, or just repetition?</h2>
+    <p class="sub">There are two things an attacker could use. The path the person takes through the video, or the same faint trace simply repeating in every frame. To tell them apart we scramble the frame order and run the attacker again. If the path mattered, scores would drop. They barely move, so repetition is what carries the leak.</p>
+    <div class="legend"><span><i class="sw" style="background:#4b6a88"></i>frames in order</span><span><i class="sw" style="background:#a9bdd0"></i>frames shuffled</span></div>
+    <div class="pairs" id="pairs"></div>
+    <p class="small narrow" style="text-align:center">Attacker score (average precision, out of 100) on VSPW person with a 3-frame clip. From the paper's table of adversary scores by model.</p>
+    <figure style="margin:20px auto 0; max-width:760px; text-align:center">
+      <img src="assets/teaser.png" alt="Left: averaging per-frame outputs recovers a silhouette. Right: time shuffling distinguishes trajectory from redundancy." style="max-width:100%;height:auto">
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Three versions of the method</h2>
+    <p class="sub">All three edit the same model and share the same training setup. They differ only in what the attacker is allowed to see and in the extra rule added to the penalty.</p>
+
+    <div class="flow shared">
+      <div class="box"><b>Video clip</b>A few consecutive frames.</div>
+      <div class="arrow">&rarr;</div>
+      <div class="box model"><b>Model being edited</b>Starts as the original model and is changed to forget the class.</div>
+      <div class="arrow">&rarr;</div>
+      <div class="box"><b>Output maps</b>The model's score for every class at every pixel, for every frame.</div>
+      <div class="arrow">&rarr;</div>
+      <div class="box att"><b>Attacker</b>A small network that tries to find the forgotten class in those maps.</div>
+      <div class="arrow">&rarr;</div>
+      <div class="box pen"><b>Penalty</b>The model is penalized when the attacker succeeds.</div>
+    </div>
+    <div class="flow shared" style="margin-top:-6px">
+      <div class="box keep" style="flex:1 1 100%"><b>Keep-it-working loss, in all three</b>The model must still segment every other class correctly, and stay close to what the original model predicted for them. Pixels of the forgotten class are relabelled with their nearest neighbouring class.</div>
+    </div>
+
+    <div class="version">
+      <header><h3>PACE-F</h3><span>attacker sees one frame</span></header>
+      <div class="flow">
+        <div class="box att see"><b>Attacker sees</b>One frame's output map at a time.
+          <svg width="150" height="52" viewBox="0 0 150 52" aria-hidden="true"><rect x="52" y="6" width="46" height="34" fill="#e6e6e6" stroke="#363636"/><text x="75" y="52" font-size="10" text-anchor="middle" fill="#6b6b6b">frame t</text></svg></div>
+        <div class="arrow">&rarr;</div>
+        <div class="box att"><b>Per-frame attacker</b>Tries to find the class in that single frame.</div>
+        <div class="arrow">&rarr;</div>
+        <div class="box pen"><b>Penalty</b>Penalized if the attacker finds the class in a frame.</div>
+      </div>
+      <dl>
+        <dt>In plain words</dt><dd>The model learns to make every single frame look clean.</dd>
+        <dt>Weak spot</dt><dd>A faint trace can remain and repeat in every frame. A one-frame attacker cannot see it, but averaging can.</dd>
+        <dt>In our tests</dt><dd>Still leaks on people: attacker score <span data-res="person,PACE-F"></span> against a leak line of 35.66.</dd>
+      </dl>
+    </div>
+
+    <div class="version">
+      <header><h3>PACE-T</h3><span>attacker watches the clip in order</span></header>
+      <div class="flow">
+        <div class="box att see"><b>Attacker sees</b>The whole clip, frames in order.
+          <svg width="190" height="52" viewBox="0 0 190 52" aria-hidden="true"><g fill="#e6e6e6" stroke="#363636"><rect x="8" y="6" width="34" height="34"/><rect x="50" y="6" width="34" height="34"/><rect x="92" y="6" width="34" height="34"/><rect x="134" y="6" width="34" height="34"/></g><g font-size="10" fill="#6b6b6b" text-anchor="middle"><text x="25" y="52">1</text><text x="67" y="52">2</text><text x="109" y="52">3</text><text x="151" y="52">4</text></g></svg></div>
+        <div class="arrow">&rarr;</div>
+        <div class="box att"><b>Clip attacker</b>Looks across time for the class.</div>
+        <div class="arrow">&rarr;</div>
+        <div class="box pen"><b>Penalty</b>Attacker success, plus a rule: the forgotten region must not move more than its surroundings.</div>
+      </div>
+      <dl>
+        <dt>In plain words</dt><dd>The model is trained against an attacker that uses several frames, and it is stopped from leaving a trace that jumps around.</dd>
+        <dt>Weak spot</dt><dd>The rule only punishes too much movement. A trace that is completely frozen costs nothing, and a frozen trace is exactly what averaging finds most easily.</dd>
+        <dt>In our tests</dt><dd>No leak found in all three settings: <span data-res="person,PACE-T"></span> on people, <span data-res="car,PACE-T"></span> on cars, <span data-res="vkitti,PACE-T"></span> on Virtual KITTI 2 cars.</dd>
+      </dl>
+    </div>
+
+    <div class="version">
+      <header><h3>PACE</h3><span>adds an averaging attacker and a two-sided rule</span></header>
+      <div class="flow">
+        <div class="box att see"><b>Attacker sees</b>The clip in order, and also only the average of the clip.
+          <svg width="260" height="52" viewBox="0 0 260 52" aria-hidden="true"><g fill="#e6e6e6" stroke="#363636"><rect x="6" y="6" width="26" height="34"/><rect x="38" y="6" width="26" height="34"/><rect x="70" y="6" width="26" height="34"/><rect x="102" y="6" width="26" height="34"/></g><text x="146" y="28" font-size="16" fill="#363636">&rarr;</text><rect x="176" y="6" width="46" height="34" fill="#cfcfcf" stroke="#363636"/><text x="199" y="52" font-size="10" text-anchor="middle" fill="#6b6b6b">average</text></svg></div>
+        <div class="arrow">&rarr;</div>
+        <div class="box att"><b>Two attackers</b>One reads the ordered clip. One reads only the average, so frame order cannot matter to it.</div>
+        <div class="arrow">&rarr;</div>
+        <div class="box pen"><b>Penalty</b>Success of either attacker, plus a two-sided rule: the region must move about as much as its surroundings, no more and no less.</div>
+      </div>
+      <dl>
+        <dt>In plain words</dt><dd>The model is trained directly against the averaging attacker, and freezing the trace no longer escapes the penalty.</dd>
+        <dt>Cost</dt><dd>About 3.8% more training time than PACE-T (853.5 against 822.2 minutes on one GPU).</dd>
+        <dt>In our tests</dt><dd>No leak found in all three settings, with the lowest attacker score of the three versions: <span data-res="person,PACE"></span> on people, <span data-res="car,PACE"></span> on cars, <span data-res="vkitti,PACE"></span> on Virtual KITTI 2 cars. On Virtual KITTI 2 it keeps much less accuracy than PACE-T (7.6 against 21.1).</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Results in plain words</h2>
+    <p class="sub">Two questions for each method. Can an attacker still find the class? (lower is better, and below the black line means no leak found.) Does the model still do its job on everything else? (higher is better.)</p>
+    <div class="btnrow" id="setBtns" role="group" aria-label="Choose a setting"></div>
+    <p class="small narrow" id="setNote" style="text-align:center"></p>
+    <div class="tablewrap">
+      <table class="restable">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Attacker score<small>average precision, lower is better</small></th>
+            <th>Model still works<small>mean IoU on the other classes, higher is better</small></th>
+            <th>In plain words</th>
+          </tr>
+        </thead>
+        <tbody id="resBody"></tbody>
+      </table>
+    </div>
+    <div class="takeaway" id="takeaway"></div>
+    <p class="small narrow" style="margin-top:12px">The black line is the leak line: the retrained model's score plus two of its trial standard deviations, the paper's rule for calling a model safe. The grey bar for the original model shows how much accuracy the model had before unlearning. Keeping under a tenth of the original accuracy is described as badly damaged, under a quarter as much lower, and under half as lower. That wording is this page's, not a rule from the paper. Numbers are copied from the paper's tables and each score averages two attacker trainings.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>What to keep in mind</h2>
+    <div class="limits">
+      <div><b>PACE costs accuracy on Virtual KITTI 2.</b> There it keeps a mean IoU of 7.6 against 21.1 for PACE-T and 50.1 for the original, so PACE-T is the better trade-off on that dataset.</div>
+      <div><b>Two datasets and two classes.</b> Real videos (VSPW, person and car) and synthetic driving videos (Virtual KITTI 2, car), all with one segmentation network, DeepLabV3 with a ResNet-50 backbone.</div>
+      <div><b>Short clips.</b> The attacker sees about two seconds. We show that repetition, not motion, carries the leak at those lengths. We do not claim motion can never leak over longer stretches.</div>
+      <div><b>The video is an illustration.</b> One clip and a quick attacker run. The measured results are in the tables.</div>
+      <div><b>One published method is an exception.</b> On Virtual KITTI 2, FT scores below the leak line and keeps the model working, so it is not true that every usable method leaks.</div>
+      <div><b>Forgetting is not the same as safe.</b> Several methods reach a low attacker score only by wrecking the model. A low score on its own is not a good result.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container narrow">
+    <h2>BibTeX</h2>
+    <pre><code>@inproceedings{tyagi2027beyond,
+  title     = {Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning},
+  author    = {Tyagi, Kavyansh and Russo, Paolo},
+  booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  year      = {2027}
+}</code></pre>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Code is released under the MIT License.
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var DATA = {"person":{"rows":[{"m":"oracle","r":30.8,"i":0.0,"a":30.82},{"m":"original","r":33.5,"i":81.2,"a":93.82},{"m":"FT","r":17.4,"i":0.0,"a":48.48},{"m":"NegGrad","r":0.1,"i":0.1,"a":88.7},{"m":"NegGrad+","r":4.9,"i":0.0,"a":68.14},{"m":"RL","r":19.0,"i":0.0,"a":86.08},{"m":"SalUn","r":15.1,"i":0.0,"a":85.68},{"m":"SSD","r":0.4,"i":0.0,"a":25.57},{"m":"SCRUB","r":31.2,"i":36.7,"a":88.6},{"m":"DELETE","r":17.1,"i":0.0,"a":70.59},{"m":"PACE-F","r":24.2,"i":8.3,"a":46.92},{"m":"PACE-T","r":22.5,"i":1.4,"a":21.1},{"m":"PACE","r":21.2,"i":0.8,"a":18.79}],"label":"People (VSPW)","thr":35.66,"note":"Real-world videos from VSPW, forgetting the person class. Leak line: 35.66."},"car":{"rows":[{"m":"oracle","r":31.6,"i":0.0,"a":18.1},{"m":"original","r":31.9,"i":33.5,"a":80.45},{"m":"FT","r":6.6,"i":0.0,"a":32.55},{"m":"NegGrad","r":0.1,"i":0.0,"a":6.97},{"m":"NegGrad+","r":3.6,"i":0.0,"a":16.79},{"m":"RL","r":3.7,"i":0.0,"a":57.61},{"m":"SalUn","r":4.5,"i":0.0,"a":62.85},{"m":"SSD","r":0.0,"i":0.0,"a":7.48},{"m":"SCRUB","r":27.5,"i":20.3,"a":54.41},{"m":"DELETE","r":8.3,"i":0.0,"a":69.57},{"m":"PACE-T","r":20.2,"i":0.0,"a":13.93},{"m":"PACE","r":19.8,"i":0.0,"a":12.1}],"label":"Cars (VSPW)","thr":29.3,"note":"Real-world videos from VSPW, forgetting the car class. Leak line: 29.30."},"vkitti":{"rows":[{"m":"oracle","r":45.0,"i":0.0,"a":50.71},{"m":"original","r":50.1,"i":82.8,"a":88.67},{"m":"FT","r":30.9,"i":0.0,"a":41.43},{"m":"NegGrad","r":1.8,"i":0.0,"a":9.67},{"m":"NegGrad+","r":4.9,"i":0.0,"a":33.57},{"m":"RL","r":31.7,"i":0.0,"a":89.17},{"m":"SalUn","r":32.2,"i":0.0,"a":92.42},{"m":"SSD","r":1.8,"i":0.0,"a":6.87},{"m":"SCRUB","r":44.7,"i":10.9,"a":95.66},{"m":"DELETE","r":32.2,"i":0.0,"a":79.56},{"m":"PACE-T","r":21.1,"i":2.2,"a":17.12},{"m":"PACE","r":7.6,"i":0.0,"a":9.11}],"label":"Cars (Virtual KITTI 2)","thr":52.13,"note":"Synthetic driving videos from Virtual KITTI 2, forgetting the car class. Leak line: 52.13."}};
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- helpers ---------- */
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function rowOf(set, name) { var r = DATA[set].rows; for (var i = 0; i < r.length; i++) if (r[i].m === name) return r[i]; return null; }
+
+  /* ---------- inline numbers in the diagrams ---------- */
+  document.querySelectorAll("[data-res]").forEach(function (n) {
+    var p = n.getAttribute("data-res").split(","); var r = rowOf(p[0], p[1]);
+    if (r) n.textContent = r.a.toFixed(2);
+  });
+
+  /* ---------- toy averaging demo ---------- */
+  var W = 96, H = 72, NF = 16, AMP = 0.34, SD = 0.42;
+  function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  var rand = rng(7);
+  function gauss() { var u = 1 - rand(), v = rand(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  var blob = new Float32Array(W * H);
+  for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) {
+    var dx = (x - W / 2) / 15, dy = (y - H / 2) / 22; blob[y * W + x] = AMP * Math.exp(-(dx * dx + dy * dy) * 1.6);
+  }
+  var frames = [];
+  for (var f = 0; f < NF; f++) { var a = new Float32Array(W * H); for (var i = 0; i < a.length; i++) a[i] = blob[i] + SD * gauss(); frames.push(a); }
+  function paint(cv, arr) {
+    var ctx = cv.getContext("2d"), img = ctx.createImageData(W, H);
+    for (var i = 0; i < arr.length; i++) { var g = Math.max(0, Math.min(255, Math.round(255 * (0.42 + arr[i] * 1.4)))); img.data[4 * i] = g; img.data[4 * i + 1] = g; img.data[4 * i + 2] = g; img.data[4 * i + 3] = 255; }
+    ctx.putImageData(img, 0, 0);
+  }
+  var strip = document.getElementById("toyStrip");
+  for (var s = 0; s < 8; s++) { var c = el("canvas"); c.width = W; c.height = H; c.setAttribute("aria-hidden", "true"); strip.appendChild(c); paint(c, frames[s]); }
+  var perm = []; for (var q = 0; q < NF; q++) perm.push(q);
+  function reshuffle() { for (var i = NF - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = perm[i]; perm[i] = perm[j]; perm[j] = t; } }
+  function meanOf(idx) { var m = new Float32Array(W * H); for (var k = 0; k < idx.length; k++) { var fr = frames[idx[k]]; for (var i = 0; i < m.length; i++) m[i] += fr[i]; }
+    for (var i2 = 0; i2 < m.length; i2++) m[i2] /= idx.length; return m; }
+  function toyUpdate() {
+    var k = +document.getElementById("toyK").value; document.getElementById("toyKval").textContent = k;
+    var ord = []; for (var i = 0; i < k; i++) ord.push(i);
+    var shuf = ord.slice(); for (var a = shuf.length - 1; a > 0; a--) { var b = Math.floor(Math.random() * (a + 1)); var t = shuf[a]; shuf[a] = shuf[b]; shuf[b] = t; }
+    var m1 = meanOf(ord), m2 = meanOf(shuf), d = 0;
+    for (var j = 0; j < m1.length; j++) d = Math.max(d, Math.abs(m1[j] - m2[j]));
+    paint(document.getElementById("toyOrdered"), m1); paint(document.getElementById("toyShuffled"), m2);
+    document.getElementById("toyDiff").textContent = d.toFixed(4);
+  }
+  document.getElementById("toyK").addEventListener("input", toyUpdate);
+  document.getElementById("toyReshuffle").addEventListener("click", toyUpdate);
+  toyUpdate();
+
+  /* ---------- real clip viewer ---------- */
+  var METHODS = [
+    { id: "original", label: "Original (nothing forgotten)", prob: 0.547, text: "The model before any unlearning. It labels the person everywhere, so there is nothing hidden." },
+    { id: "RL", label: "RL", prob: 0.524, text: "Looks clean frame by frame, since the middle panel shows no person. The right panel shows the attacker still finds the person once the outputs are pooled." },
+    { id: "SCRUB", label: "SCRUB", prob: 0.494, text: "Does not really forget. Its own prediction still marks part of the person, and the attacker finds the rest." },
+    { id: "SalUn", label: "SalUn", prob: 0.551, text: "Looks clean frame by frame, but pooling recovers the person about as well as for the original model." },
+    { id: "PACE-T", label: "PACE-T", prob: 0.166, ours: true, text: "The attacker is much less sure. Some faint trace remains in places." },
+    { id: "PACE", label: "PACE (ours)", prob: 0.112, ours: true, text: "The attacker is least sure of all. The right panel stays mostly dark." }
+  ];
+  var N = 16, COLS = 4, TW = 432, TH = 250;
+  var sheets = {};
+  function sheet(name, cb) {
+    if (sheets[name] && sheets[name].complete) return sheets[name];
+    if (!sheets[name]) { var im = new Image(); im.onload = cb; im.src = "assets/frames/" + name + ".jpg"; sheets[name] = im; }
+    return sheets[name];
+  }
+  function draw(canvasId, name, i) {
+    var cv = document.getElementById(canvasId), ctx = cv.getContext("2d"), im = sheet(name, function () { render(); });
+    if (!im.complete || !im.naturalWidth) return;
+    ctx.drawImage(im, (i % COLS) * TW, Math.floor(i / COLS) * TH, TW, TH, 0, 0, TW, TH);
+  }
+  var cur = 5, frame = 0, playing = !reduceMotion, timer = null;
+  function render() {
+    var m = METHODS[cur];
+    draw("cvReal", "pred_gt", frame); draw("cvPred", "pred_" + m.id, frame); draw("cvAtt", "att_" + m.id, frame);
+    document.getElementById("frameNo").textContent = "Frame " + (frame + 1) + " of " + N;
+    document.getElementById("frameSlider").value = frame;
+  }
+  function readout() {
+    var m = METHODS[cur];
+    document.getElementById("readout").innerHTML = "<b>" + m.label + ".</b> " + m.text +
+      " Average confidence the attacker puts on person, over every pixel of this clip: <b>" + m.prob.toFixed(3) + "</b> (lower means less recovered).";
+  }
+  function pick(i) {
+    cur = i; readout(); render();
+    document.querySelectorAll("#methodBtns .tab").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+  }
+  var mb = document.getElementById("methodBtns");
+  METHODS.forEach(function (m, i) { var b = el("button", "tab" + (m.ours ? " ours" : ""), m.label); b.type = "button"; b.addEventListener("click", function () { pick(i); }); mb.appendChild(b); });
+  function tick() { frame = (frame + 1) % N; render(); }
+  function setPlaying(p) { playing = p; document.getElementById("playBtn").textContent = p ? "Pause" : "Play"; clearInterval(timer); if (p) timer = setInterval(tick, 250); }
+  document.getElementById("playBtn").addEventListener("click", function () { setPlaying(!playing); });
+  document.getElementById("frameSlider").addEventListener("input", function (e) { frame = +e.target.value; setPlaying(false); render(); });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting && playing) { clearInterval(timer); } else if (e.isIntersecting && playing) { clearInterval(timer); timer = setInterval(tick, 250); } }); }, { threshold: 0.2 }).observe(document.getElementById("cvAtt"));
+  }
+  ["pred_gt"].concat(METHODS.map(function (m) { return "pred_" + m.id; }), METHODS.map(function (m) { return "att_" + m.id; })).forEach(function (n) { sheet(n, render); });
+  pick(cur); setPlaying(playing);
+
+  /* ---------- shuffle test bars ---------- */
+  var SHUF = [["Oracle (retrained)", 26.99, 26.77], ["Original", 94.94, 94.94], ["SalUn", 84.74, 83.54], ["PACE-F", 45.26, 45.35], ["PACE-T", 21.26, 22.62]];
+  var pairs = document.getElementById("pairs");
+  SHUF.forEach(function (r) {
+    var row = el("div", "pair"); row.appendChild(el("div", "name", r[0]));
+    var bars = el("div");
+    bars.innerHTML = '<div class="bar a"><i style="width:' + r[1] + '%"></i><span>' + r[1].toFixed(2) + '</span></div><div class="bar b"><i style="width:' + r[2] + '%"></i><span>' + r[2].toFixed(2) + '</span></div>';
+    row.appendChild(bars); pairs.appendChild(row);
+  });
+
+  /* ---------- results ---------- */
+  var SETS = ["person", "car", "vkitti"];
+  var NAMES = { oracle: "Retrained without the class (oracle)", original: "Original model" };
+  var PUB = ["FT", "NegGrad", "NegGrad+", "RL", "SalUn", "SSD", "SCRUB", "DELETE"];
+  var curSet = "person";
+  function verdict(row, set) {
+    var d = DATA[set], orig = rowOf(set, "original").r, frac = row.r / orig;
+    if (row.m === "oracle") return ["v-ref", "Reference: the best any method could do"];
+    if (row.m === "original") return ["v-leak", "Nothing forgotten"];
+    if (row.a >= d.thr) {
+      if (frac < 0.10) return ["v-leak", "Still leaks, and the model is also badly damaged"];
+      if (row.i >= 10) return ["v-leak", "Did not really forget: still segments the class"];
+      return ["v-leak", "Looks forgotten per frame, but averaging recovers it"];
+    }
+    if (frac < 0.10) return ["v-warn", "No leak found, but the model is badly damaged"];
+    if (frac < 0.25) return ["v-warn", "No leak found, but accuracy is much lower"];
+    if (frac < 0.5) return ["v-ok", "No leak found, accuracy is lower"];
+    return ["v-ok", "No leak found and the model still works"];
+  }
+  function meter(val, max, color, thr, dec) {
+    var w = Math.min(100, val / max * 100), small = w < 26;
+    var lab = '<b style="' + (small ? "left:calc(" + w + "% + 6px);color:var(--ink);text-shadow:none" : "") + '">' + val.toFixed(dec) + '</b>';
+    var s = '<div class="meter"><i style="width:' + w + '%;background:' + color + '"></i>' + lab;
+    if (thr != null) s += '<span class="line" style="left:' + (thr / max * 100) + '%"></span>';
+    return s + '</div>';
+  }
+  function renderSet() {
+    var d = DATA[curSet], body = document.getElementById("resBody"); body.innerHTML = "";
+    document.getElementById("setNote").textContent = d.note;
+    var origR = rowOf(curSet, "original").r;
+    function add(row) {
+      var v = verdict(row, curSet), tr = el("tr", row.m.indexOf("PACE") === 0 ? "ours" : "");
+      var name = NAMES[row.m] || row.m; if (row.m === "PACE") name = "PACE (ours)";
+      var col = row.m === "oracle" ? "#8a8a8a" : (row.a >= d.thr ? "var(--red)" : "var(--green)");
+      tr.innerHTML = "<td>" + name + "</td><td>" + meter(row.a, 100, col, d.thr, 2) + "</td><td>" + meter(row.r, origR, "#5b6f86", null, 1) + "</td><td class='" + v[0] + "'>" + v[1] + "</td>";
+      body.appendChild(tr);
+    }
+    function group(t) { var tr = el("tr", "group"); tr.innerHTML = "<td colspan='4'>" + t + "</td>"; body.appendChild(tr); }
+    group("References"); add(rowOf(curSet, "original")); add(rowOf(curSet, "oracle"));
+    group("Published methods"); PUB.forEach(function (n) { var r = rowOf(curSet, n); if (r) add(r); });
+    group("Our versions"); ["PACE-F", "PACE-T", "PACE"].forEach(function (n) { var r = rowOf(curSet, n); if (r) add(r); });
+    var pub = PUB.map(function (n) { return rowOf(curSet, n); }).filter(Boolean);
+    var leak = pub.filter(function (r) { return r.a >= d.thr; }).length;
+    var safe = pub.filter(function (r) { return r.a < d.thr; });
+    var broken = safe.filter(function (r) { return r.r / origR < 0.25; }).length;
+    var pace = rowOf(curSet, "PACE"), pt = rowOf(curSet, "PACE-T");
+    document.getElementById("takeaway").innerHTML = "<b>Reading this setting.</b> " + leak + " of " + pub.length + " published methods still leak. " +
+      safe.length + " reach the leak line, and " + broken + " of those do it only by badly damaging the model. PACE scores " + pace.a.toFixed(2) +
+      " with the model keeping " + pace.r.toFixed(1) + " of the original " + origR.toFixed(1) + (pt ? ", and PACE-T scores " + pt.a.toFixed(2) + " keeping " + pt.r.toFixed(1) : "") + ".";
+  }
+  var sb = document.getElementById("setBtns");
+  SETS.forEach(function (s) { var b = el("button", "tab", DATA[s].label); b.type = "button"; b.setAttribute("aria-pressed", s === curSet ? "true" : "false");
+    b.addEventListener("click", function () { curSet = s; sb.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderSet(); }); sb.appendChild(b); });
+  renderSet();
+})();
+</script>
+</body>
+</html>

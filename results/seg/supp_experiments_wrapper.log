@@ -1,0 +1,27 @@
+waiting for pid 841588 to finish...
+=== [1/3] PACE, conv3d architecture, T=16 (extends architecture-robustness to PACE) Sun Aug 23 02:49:28 AM IST 2026 ===
+[protocol] T=16 stride=2 (~2.1s span) attacker=conv3d phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  ADVR-P           ordered  : AP 17.13+/-3.46  AUC 63.33  IoU* 15.75  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3700
+  ADVR-P           shuffled : AP 18.18+/-1.30  AUC 65.89  IoU* 16.40  IoU@.5  0.00  posrate  0.00  cons 50.28  loss 0.3800
+  ADVR-P           SYNERGY  : dAP -1.05 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           frame    : AP 12.33  AUC 60.33  IoU* 12.51
+
+wrote results/seg/zoo_conv3d_T16_s2_PACE.json
+=== [2/3] PACE, convgru architecture, T=16 Sun Aug 23 03:57:05 AM IST 2026 ===
+[protocol] T=16 stride=2 (~2.1s span) attacker=convgru phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  ADVR-P           ordered  : AP 20.15+/-0.76  AUC 67.95  IoU* 17.26  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3400
+  ADVR-P           shuffled : AP 21.16+/-0.29  AUC 68.87  IoU* 17.71  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  ADVR-P           SYNERGY  : dAP -1.01 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           frame    : AP 12.53  AUC 60.37  IoU* 11.91
+
+wrote results/seg/zoo_convgru_T16_s2_PACE.json
+=== [3/3] PACE, mamba, T=16, N=3 replication (tighter trial spread on headline number) Sun Aug 23 05:05:50 AM IST 2026 ===
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=3 | train 4000 clips / eval 800 clips
+  ADVR-P           ordered  : AP 19.61+/-1.51  AUC 67.31  IoU* 17.12  IoU@.5  0.95  posrate  0.40  cons 63.46  loss 0.3400
+  ADVR-P           shuffled : AP 22.46+/-0.60  AUC 69.73  IoU* 18.53  IoU@.5  0.01  posrate  0.00  cons 4.3  loss 0.3800
+  ADVR-P           SYNERGY  : dAP -2.85 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+wrote results/seg/zoo_mamba_T16_s2_PACE_N3.json
+########## SUPP EXPERIMENTS DONE Sun Aug 23 06:41:02 AM IST 2026 ##########

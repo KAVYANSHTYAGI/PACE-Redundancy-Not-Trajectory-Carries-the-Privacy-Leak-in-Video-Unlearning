@@ -1,0 +1,322 @@
+=========== 1. baselines  2026-07-23 16:09:54 ===========
+=========== 1. baselines  2026-07-23 16:09:54 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[skip] FT (checkpoints/unlearned_bl_FT_s1.pth exists)
+[skip] NegGrad (checkpoints/unlearned_bl_NegGrad_s1.pth exists)
+[skip] NegGrad+ (checkpoints/unlearned_bl_NegGrad+_s1.pth exists)
+[skip] RL (checkpoints/unlearned_bl_RL_s1.pth exists)
+[skip] SalUn (checkpoints/unlearned_bl_SalUn_s1.pth exists)
+[skip] SSD (checkpoints/unlearned_bl_SSD_s1.pth exists)
+[SCRUB] training with {'epochs': 2, 'lr': 0.0005, 'msteps': 1}
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[skip] FT (checkpoints/unlearned_bl_FT_s1.pth exists)
+[skip] NegGrad (checkpoints/unlearned_bl_NegGrad_s1.pth exists)
+[skip] NegGrad+ (checkpoints/unlearned_bl_NegGrad+_s1.pth exists)
+[skip] RL (checkpoints/unlearned_bl_RL_s1.pth exists)
+[skip] SalUn (checkpoints/unlearned_bl_SalUn_s1.pth exists)
+[skip] SSD (checkpoints/unlearned_bl_SSD_s1.pth exists)
+[SCRUB] training with {'epochs': 2, 'lr': 0.0005, 'msteps': 1}
+[SCRUB] DONE 390.0min -> checkpoints/unlearned_bl_SCRUB_s1.pth
+[SCRUB] DONE 390.0min -> checkpoints/unlearned_bl_SCRUB_s1.pth
+[DELETE] training with {'epochs': 2, 'lr': 0.01}
+[DELETE] training with {'epochs': 2, 'lr': 0.01}
+[DELETE] DONE 256.8min -> checkpoints/unlearned_bl_DELETE_s1.pth
+[DELETE] DONE 256.8min -> checkpoints/unlearned_bl_DELETE_s1.pth
+=========== 2. ADVR (per-frame)  2026-07-24 03:09:33 ===========
+=========== 2. ADVR (per-frame)  2026-07-24 03:09:33 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR] 138076 train units, epochs=4, per-frame
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR] 138076 train units, epochs=4, per-frame
+  saved checkpoints/unlearned_ADVR.pth
+[ADVR] trained in 1052.8min
+  saved checkpoints/unlearned_ADVR.pth
+[ADVR] trained in 1052.8min
+=========== 3. ADVR-T (temporal)  2026-07-24 20:42:27 ===========
+=========== 3. ADVR-T (temporal)  2026-07-24 20:42:27 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-T] 45976 train units, epochs=4, clip_len=3
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-T] 45976 train units, epochs=4, clip_len=3
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/scripts/test_candidate.py", line 105, in <module>
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/scripts/test_candidate.py", line 105, in <module>
+    main()
+    main()
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/scripts/test_candidate.py", line 80, in main
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/scripts/test_candidate.py", line 80, in main
+    um = run_candidate(args.name, m, ul, device=device, **kw)
+    um = run_candidate(args.name, m, ul, device=device, **kw)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/candidates.py", line 224, in run_candidate
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/candidates.py", line 224, in run_candidate
+    return CANDIDATES[name](model, loader, device=device, **kw)
+    return CANDIDATES[name](model, loader, device=device, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/candidates.py", line 169, in adv_temporal
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/candidates.py", line 169, in adv_temporal
+    zf = seg_forward(m, imgs_f)                            # [N*T,C,H,W]
+    zf = seg_forward(m, imgs_f)                            # [N*T,C,H,W]
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/model.py", line 31, in seg_forward
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/model.py", line 31, in seg_forward
+    return model(x)["out"]
+    return model(x)["out"]
+           ^^^^^^^^
+           ^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torchvision/models/segmentation/_utils.py", line 23, in forward
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torchvision/models/segmentation/_utils.py", line 23, in forward
+    features = self.backbone(x)
+    features = self.backbone(x)
+               ^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+               ^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torchvision/models/_utils.py", line 69, in forward
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torchvision/models/_utils.py", line 69, in forward
+    x = module(x)
+    x = module(x)
+        ^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+        ^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+            ^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 158, in forward
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 158, in forward
+    identity = self.downsample(x)
+    identity = self.downsample(x)
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+            ^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/batchnorm.py", line 193, in forward
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/modules/batchnorm.py", line 193, in forward
+    return F.batch_norm(
+    return F.batch_norm(
+           ^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/functional.py", line 2813, in batch_norm
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/nn/functional.py", line 2813, in batch_norm
+    return torch.batch_norm(
+    return torch.batch_norm(
+           ^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 576.00 MiB. GPU 0 has a total capacity of 15.47 GiB of which 359.00 MiB is free. Process 2754 has 8.71 MiB memory in use. Including non-PyTorch memory, this process has 14.78 GiB memory in use. Of the allocated memory 14.13 GiB is allocated by PyTorch, and 334.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 576.00 MiB. GPU 0 has a total capacity of 15.47 GiB of which 359.00 MiB is free. Process 2754 has 8.71 MiB memory in use. Including non-PyTorch memory, this process has 14.78 GiB memory in use. Of the allocated memory 14.13 GiB is allocated by PyTorch, and 334.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+=========== 4. benchmark (utility + per-frame leak)  2026-07-24 20:49:27 ===========
+=========== 4. benchmark (utility + per-frame leak)  2026-07-24 20:49:27 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  original               person  81.2 | retain  33.5 | blend  96.5 | silh  33.2 | recover -18.5
+  original               person  81.2 | retain  33.5 | blend  96.5 | silh  33.2 | recover -18.5
+  oracle                 person   0.0 | retain  30.8 | blend  52.6 | silh  16.8 | recover 10.7
+  oracle                 person   0.0 | retain  30.8 | blend  52.6 | silh  16.8 | recover 10.7
+  ADVR                   person   8.3 | retain  24.2 | blend  56.5 | silh  15.9 | recover 5.8
+  ADVR                   person   8.3 | retain  24.2 | blend  56.5 | silh  15.9 | recover 5.8
+  bl_DELETE_s1           person   0.0 | retain  17.1 | blend  73.0 | silh  16.8 | recover 14.2
+  bl_DELETE_s1           person   0.0 | retain  17.1 | blend  73.0 | silh  16.8 | recover 14.2
+  bl_FT_s1               person   0.0 | retain  17.4 | blend  77.5 | silh  18.7 | recover 13.4
+  bl_FT_s1               person   0.0 | retain  17.4 | blend  77.5 | silh  18.7 | recover 13.4
+  bl_NegGrad+_s1         person   0.0 | retain   4.9 | blend  92.3 | silh  16.1 | recover 0.0
+  bl_NegGrad+_s1         person   0.0 | retain   4.9 | blend  92.3 | silh  16.1 | recover 0.0
+  bl_NegGrad_s1          person   0.0 | retain   0.1 | blend  85.9 | silh  11.3 | recover 0.0
+  bl_NegGrad_s1          person   0.0 | retain   0.1 | blend  85.9 | silh  11.3 | recover 0.0
+  bl_RL_s1               person   0.0 | retain  19.0 | blend  83.2 | silh  21.8 | recover 0.0
+  bl_RL_s1               person   0.0 | retain  19.0 | blend  83.2 | silh  21.8 | recover 0.0
+  bl_SCRUB_s1            person   0.0 | retain   0.1 | blend  85.9 | silh  11.3 | recover 0.0
+  bl_SCRUB_s1            person   0.0 | retain   0.1 | blend  85.9 | silh  11.3 | recover 0.0
+  bl_SSD_s1              person   0.0 | retain   0.4 | blend  83.5 | silh  11.8 | recover 8.9
+  bl_SSD_s1              person   0.0 | retain   0.4 | blend  83.5 | silh  11.8 | recover 8.9
+  bl_SalUn_s1            person   0.0 | retain  15.1 | blend  82.8 | silh  19.0 | recover 0.0
+  bl_SalUn_s1            person   0.0 | retain  15.1 | blend  82.8 | silh  19.0 | recover 0.0
+
+wrote results/seg/benchmark.json
+
+wrote results/seg/benchmark.json
+=========== 5. temporal attack (headline)  2026-07-24 21:30:28 ===========
+=========== 5. temporal attack (headline)  2026-07-24 21:30:28 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[skip] ADVR-T: checkpoints/unlearned_ADVR-T.pth missing
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[skip] ADVR-T: checkpoints/unlearned_ADVR-T.pth missing
+  oracle_FLOOR       frame   : AUC 73.5+/-0.4 IoU 19.5
+  oracle_FLOOR       frame   : AUC 73.5+/-0.4 IoU 19.5
+  oracle_FLOOR       temporal: AUC 73.3+/-0.5 IoU 16.8 cons 91.3
+  oracle_FLOOR       temporal: AUC 73.3+/-0.5 IoU 16.8 cons 91.3
+  original           frame   : AUC 99.1+/-0.1 IoU 76.7
+  original           frame   : AUC 99.1+/-0.1 IoU 76.7
+  original           temporal: AUC 99.2+/-0.0 IoU 82.7 cons 90.0
+  original           temporal: AUC 99.2+/-0.0 IoU 82.7 cons 90.0
+  DELETE_logitmask   frame   : AUC 88.0+/-0.8 IoU 30.2
+  DELETE_logitmask   frame   : AUC 88.0+/-0.8 IoU 30.2
+  DELETE_logitmask   temporal: AUC 93.6+/-0.5 IoU 43.2 cons 93.3
+  DELETE_logitmask   temporal: AUC 93.6+/-0.5 IoU 43.2 cons 93.3
+  ADVR               frame   : AUC 82.5+/-0.5 IoU 27.7
+  ADVR               frame   : AUC 82.5+/-0.5 IoU 27.7
+  ADVR               temporal: AUC 85.2+/-0.4 IoU 34.6 cons 93.7
+  ADVR               temporal: AUC 85.2+/-0.4 IoU 34.6 cons 93.7
+  bl_SSD_s1          frame   : AUC 72.3+/-1.4 IoU 10.0
+  bl_SSD_s1          frame   : AUC 72.3+/-1.4 IoU 10.0
+  bl_SSD_s1          temporal: AUC 75.1+/-1.0 IoU 5.2 cons 71.0
+  bl_SSD_s1          temporal: AUC 75.1+/-1.0 IoU 5.2 cons 71.0
+  bl_SalUn_s1        frame   : AUC 95.6+/-0.1 IoU 56.0
+  bl_SalUn_s1        frame   : AUC 95.6+/-0.1 IoU 56.0
+  bl_SalUn_s1        temporal: AUC 97.7+/-0.0 IoU 69.9 cons 90.8
+  bl_SalUn_s1        temporal: AUC 97.7+/-0.0 IoU 69.9 cons 90.8
+  bl_DELETE_s1       frame   : AUC 91.6+/-0.6 IoU 45.9
+  bl_DELETE_s1       frame   : AUC 91.6+/-0.6 IoU 45.9
+  bl_DELETE_s1       temporal: AUC 91.2+/-0.4 IoU 46.5 cons 94.7
+  bl_DELETE_s1       temporal: AUC 91.2+/-0.4 IoU 46.5 cons 94.7
+
+floors: frame_AUC 73.5+/-0.4  temporal_AUC 73.3+/-0.5
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           frame:LEAK temporal:LEAK (T-F gap +0.1)
+  DELETE_logitmask   frame:LEAK temporal:LEAK (T-F gap +5.6)
+  ADVR               frame:LEAK temporal:LEAK (T-F gap +2.7)
+  bl_SSD_s1          frame:safe temporal:LEAK (T-F gap +2.8)
+  bl_SalUn_s1        frame:LEAK temporal:LEAK (T-F gap +2.1)
+  bl_DELETE_s1       frame:LEAK temporal:LEAK (T-F gap -0.4)
+
+wrote results/seg/temporal_attack.json
+
+floors: frame_AUC 73.5+/-0.4  temporal_AUC 73.3+/-0.5
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           frame:LEAK temporal:LEAK (T-F gap +0.1)
+  DELETE_logitmask   frame:LEAK temporal:LEAK (T-F gap +5.6)
+  ADVR               frame:LEAK temporal:LEAK (T-F gap +2.7)
+  bl_SSD_s1          frame:safe temporal:LEAK (T-F gap +2.8)
+  bl_SalUn_s1        frame:LEAK temporal:LEAK (T-F gap +2.1)
+  bl_DELETE_s1       frame:LEAK temporal:LEAK (T-F gap -0.4)
+
+wrote results/seg/temporal_attack.json
+############ PIPELINE DONE  2026-07-24 23:34:57 ############
+############ PIPELINE DONE  2026-07-24 23:34:57 ############
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  original               person  81.2 | retain  33.5 | blend  96.5 | silh  33.2 | recover -26.6
+  oracle                 person   0.0 | retain  30.8 | blend  52.6 | silh  16.8 | recover 9.5
+  ADVR-T                 person   1.4 | retain  22.5 | blend  54.3 | silh  14.6 | recover 7.7
+  ADVR                   person   8.3 | retain  24.2 | blend  56.5 | silh  15.9 | recover 5.3
+  bl_DELETE_s1           person   0.0 | retain  17.1 | blend  73.0 | silh  16.8 | recover 13.1
+  bl_FT_s1               person   0.0 | retain  17.4 | blend  77.5 | silh  18.7 | recover 12.8
+  bl_NegGrad+_s1         person   0.0 | retain   4.9 | blend  92.3 | silh  16.1 | recover 0.0
+  bl_NegGrad_s1          person   0.0 | retain   0.1 | blend  85.9 | silh  11.3 | recover 0.0
+  bl_RL_s1               person   0.0 | retain  19.0 | blend  83.2 | silh  21.8 | recover 0.0
+  bl_SCRUB_s1            person   0.0 | retain   0.1 | blend  85.9 | silh  11.3 | recover 0.0
+  bl_SSD_s1              person   0.0 | retain   0.4 | blend  83.5 | silh  11.8 | recover 9.0
+  bl_SalUn_s1            person   0.0 | retain  15.1 | blend  82.8 | silh  19.0 | recover 0.0
+
+wrote results/seg/benchmark.json
+=========== re-run: temporal attack with ADVR-T  2026-07-25 14:12:46 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  oracle_FLOOR       frame   : AUC 72.9+/-1.1 IoU 18.9
+  oracle_FLOOR       temporal: AUC 74.0+/-0.5 IoU 15.2 cons 90.3
+  original           frame   : AUC 98.9+/-0.2 IoU 77.1
+  original           temporal: AUC 99.2+/-0.1 IoU 82.6 cons 90.3
+  DELETE_logitmask   frame   : AUC 90.6+/-0.9 IoU 33.1
+  DELETE_logitmask   temporal: AUC 93.1+/-0.8 IoU 45.3 cons 92.6
+  ADVR               frame   : AUC 79.7+/-1.1 IoU 24.8
+  ADVR               temporal: AUC 85.2+/-1.0 IoU 34.4 cons 95.0
+  ADVR-T             frame   : AUC 68.3+/-2.1 IoU 11.3
+  ADVR-T             temporal: AUC 68.1+/-0.7 IoU 2.0 cons 50.2
+  bl_SSD_s1          frame   : AUC 70.6+/-4.1 IoU 8.4
+  bl_SSD_s1          temporal: AUC 75.3+/-1.6 IoU 6.1 cons 65.3
+  bl_SalUn_s1        frame   : AUC 95.0+/-0.5 IoU 54.7
+  bl_SalUn_s1        temporal: AUC 97.0+/-1.0 IoU 69.5 cons 90.6
+  bl_DELETE_s1       frame   : AUC 91.3+/-0.3 IoU 44.7
+  bl_DELETE_s1       temporal: AUC 90.6+/-1.1 IoU 46.0 cons 94.7
+
+floors: frame_AUC 72.9+/-1.1  temporal_AUC 74.0+/-0.5
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           frame:LEAK temporal:LEAK (T-F gap +0.3)
+  DELETE_logitmask   frame:LEAK temporal:LEAK (T-F gap +2.5)
+  ADVR               frame:LEAK temporal:LEAK (T-F gap +5.5)
+  ADVR-T             frame:safe temporal:safe (T-F gap -0.2)
+  bl_SSD_s1          frame:safe temporal:LEAK (T-F gap +4.7)
+  bl_SalUn_s1        frame:LEAK temporal:LEAK (T-F gap +2.0)
+  bl_DELETE_s1       frame:LEAK temporal:LEAK (T-F gap -0.7)
+
+wrote results/seg/temporal_attack.json
+############ RERUN DONE  2026-07-25 16:34:42 ############

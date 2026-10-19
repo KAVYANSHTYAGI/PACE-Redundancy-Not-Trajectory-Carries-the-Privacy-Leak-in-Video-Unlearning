@@ -1,0 +1,14 @@
+oracle_FLOOR           person_IoU   0.0  retain_mIoU  30.8  mIoU  30.5
+original               person_IoU  81.2  retain_mIoU  33.5  mIoU  34.1
+ADVR                   person_IoU   8.3  retain_mIoU  24.2  mIoU  24.1
+ADVR-T                 person_IoU   1.4  retain_mIoU  22.5  mIoU  22.3
+bl_FT_s1               person_IoU   0.0  retain_mIoU  17.4  mIoU  17.2
+bl_NegGrad_s1_cls60    person_IoU   0.1  retain_mIoU   0.1  mIoU   0.1
+bl_NegGrad+_s1         person_IoU   0.0  retain_mIoU   4.9  mIoU   4.8
+bl_RL_s1               person_IoU   0.0  retain_mIoU  19.0  mIoU  18.8
+bl_SalUn_s1            person_IoU   0.0  retain_mIoU  15.1  mIoU  14.9
+bl_SSD_s1              person_IoU   0.0  retain_mIoU   0.4  mIoU   0.4
+bl_SCRUB_s1_cls60      person_IoU  36.7  retain_mIoU  31.2  mIoU  31.3
+bl_DELETE_s1           person_IoU   0.0  retain_mIoU  17.1  mIoU  16.9
+ADVR-P                 person_IoU   0.8  retain_mIoU  21.2  mIoU  21.0
+wrote results/seg/utility_person.json

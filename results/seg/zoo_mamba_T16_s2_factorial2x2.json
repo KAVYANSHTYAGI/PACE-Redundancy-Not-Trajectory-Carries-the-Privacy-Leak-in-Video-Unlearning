@@ -1,0 +1,115 @@
+{
+  "ADVR-T": {
+    "ordered": {
+      "attacker_AP": 21.5,
+      "attacker_AP_std": 0.61,
+      "attacker_AUC": 68.12,
+      "attacker_AUC_std": 0.42,
+      "attacker_IoU": 0.05,
+      "attacker_IoU_best": 16.92,
+      "attacker_pos_rate": 0.01,
+      "traj_consistency": 26.52,
+      "final_train_loss": 0.32
+    },
+    "shuffled": {
+      "attacker_AP": 20.36,
+      "attacker_AP_std": 2.62,
+      "attacker_AUC": 66.23,
+      "attacker_AUC_std": 3.41,
+      "attacker_IoU": 2.06,
+      "attacker_IoU_best": 15.73,
+      "attacker_pos_rate": 0.73,
+      "traj_consistency": 19.3,
+      "final_train_loss": 0.33
+    },
+    "synergy_AP": 1.14
+  },
+  "PACE-P-only": {
+    "ordered": {
+      "attacker_AP": 24.58,
+      "attacker_AP_std": 3.13,
+      "attacker_AUC": 71.77,
+      "attacker_AUC_std": 3.18,
+      "attacker_IoU": 3.23,
+      "attacker_IoU_best": 19.37,
+      "attacker_pos_rate": 0.9,
+      "traj_consistency": 60.04,
+      "final_train_loss": 0.32
+    },
+    "shuffled": {
+      "attacker_AP": 24.63,
+      "attacker_AP_std": 1.85,
+      "attacker_AUC": 71.25,
+      "attacker_AUC_std": 2.8,
+      "attacker_IoU": 6.1,
+      "attacker_IoU_best": 18.37,
+      "attacker_pos_rate": 1.87,
+      "traj_consistency": 44.29,
+      "final_train_loss": 0.32
+    },
+    "synergy_AP": -0.05
+  },
+  "PACE-TS-only": {
+    "ordered": {
+      "attacker_AP": 24.09,
+      "attacker_AP_std": 0.63,
+      "attacker_AUC": 71.65,
+      "attacker_AUC_std": 1.24,
+      "attacker_IoU": 0.36,
+      "attacker_IoU_best": 19.52,
+      "attacker_pos_rate": 0.13,
+      "traj_consistency": 54.62,
+      "final_train_loss": 0.35
+    },
+    "shuffled": {
+      "attacker_AP": 23.71,
+      "attacker_AP_std": 4.46,
+      "attacker_AUC": 69.88,
+      "attacker_AUC_std": 2.83,
+      "attacker_IoU": 1.01,
+      "attacker_IoU_best": 18.29,
+      "attacker_pos_rate": 0.4,
+      "traj_consistency": 27.62,
+      "final_train_loss": 0.31
+    },
+    "synergy_AP": 0.38
+  },
+  "ADVR-P": {
+    "ordered": {
+      "attacker_AP": 21.43,
+      "attacker_AP_std": 2.25,
+      "attacker_AUC": 68.59,
+      "attacker_AUC_std": 0.95,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 17.76,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": NaN,
+      "final_train_loss": 0.34
+    },
+    "shuffled": {
+      "attacker_AP": 20.52,
+      "attacker_AP_std": 0.69,
+      "attacker_AUC": 68.13,
+      "attacker_AUC_std": 0.94,
+      "attacker_IoU": 0.12,
+      "attacker_IoU_best": 17.8,
+      "attacker_pos_rate": 0.03,
+      "traj_consistency": 13.34,
+      "final_train_loss": 0.35
+    },
+    "synergy_AP": 0.91
+  },
+  "_config": {
+    "clip_len": 16,
+    "frame_stride": 2,
+    "span_seconds": 2.07,
+    "steps": 500,
+    "eff_clips": 4,
+    "phys_bs": 1,
+    "accum": 4,
+    "n_trials": 2,
+    "n_eval_clips": 800,
+    "n_train_clips": 4000,
+    "temporal_kind": "mamba"
+  }
+}

@@ -1,0 +1,15 @@
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  bl_SCRUB_s1_cls48 ordered  : AP 54.41+/-2.04  AUC 88.75  IoU* 41.14  IoU@.5 40.70  posrate  7.82  cons 75.11  loss 0.0800
+  bl_SCRUB_s1_cls48 shuffled : AP 51.56+/-6.63  AUC 88.04  IoU* 40.82  IoU@.5 40.52  posrate  7.75  cons 52.35  loss 0.0500
+  bl_SCRUB_s1_cls48 SYNERGY  : dAP +2.85 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_DELETE_s1_cls48 ordered  : AP 69.57+/-1.76  AUC 94.98  IoU* 49.67  IoU@.5 43.34  posrate 10.88  cons 78.46  loss 0.0600
+  bl_DELETE_s1_cls48 shuffled : AP 63.45+/-10.57  AUC 95.21  IoU* 48.73  IoU@.5 44.73  posrate  9.84  cons 53.81  loss 0.0600
+  bl_DELETE_s1_cls48 SYNERGY  : dAP +6.12 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T_car       ordered  : AP 13.93+/-0.37  AUC 63.53  IoU* 12.14  IoU@.5  2.11  posrate  0.49  cons 46.64  loss 0.2200
+  ADVR-T_car       shuffled : AP 13.73+/-0.31  AUC 67.90  IoU* 11.06  IoU@.5  1.29  posrate  0.23  cons 21.77  loss 0.2200
+  ADVR-T_car       SYNERGY  : dAP +0.20 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P_car       ordered  : AP 12.10+/-1.81  AUC 66.74  IoU*  9.74  IoU@.5  2.91  posrate  0.81  cons 53.87  loss 0.2300
+  ADVR-P_car       shuffled : AP 12.17+/-1.33  AUC 65.59  IoU* 10.41  IoU@.5  0.64  posrate  0.15  cons 15.22  loss 0.2300
+  ADVR-P_car       SYNERGY  : dAP -0.07 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+wrote results/seg/zoo_mamba_T16_s2_car_remainder.json

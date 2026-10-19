@@ -1,0 +1,43 @@
+=== T=2 Sun Aug 23 01:44:00 PM IST 2026 ===
+[protocol] T=2 stride=2 (~0.2s span) attacker=mamba phys_bs=4 accum=1 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 29.48+/-0.33  AUC 73.59  IoU* 21.58  IoU@.5  9.38  posrate  4.46  cons 70.52  loss 0.3400
+  oracle_FLOOR     shuffled : AP 30.78+/-1.20  AUC 75.14  IoU* 22.18  IoU@.5 16.07  posrate  6.36  cons 66.82  loss 0.3400
+  oracle_FLOOR     SYNERGY  : dAP -1.30 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.27+/-0.16  AUC 99.15  IoU* 81.91  IoU@.5 81.44  posrate 12.80  cons 83.43  loss 0.0400
+  original         shuffled : AP 93.44+/-0.61  AUC 99.13  IoU* 81.81  IoU@.5 81.60  posrate 12.81  cons 83.39  loss 0.0400
+  original         SYNERGY  : dAP -0.17 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 24.16+/-0.10  AUC 71.64  IoU* 19.23  IoU@.5  0.40  posrate  0.09  cons 44.06  loss 0.3500
+  ADVR-T           shuffled : AP 24.50+/-0.82  AUC 71.75  IoU* 19.31  IoU@.5  0.57  posrate  0.16  cons 59.2  loss 0.3400
+  ADVR-T           SYNERGY  : dAP -0.34 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 23.07+/-0.51  AUC 70.02  IoU* 19.14  IoU@.5  0.27  posrate  0.13  cons 43.77  loss 0.3700
+  ADVR-P           shuffled : AP 23.35+/-0.41  AUC 70.16  IoU* 18.46  IoU@.5  1.44  posrate  0.51  cons 52.97  loss 0.3700
+  ADVR-P           SYNERGY  : dAP -0.28 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 29.48+/-0.33  -> leaks iff AP > 30.14
+  original         LEAK  AP 93.27  synergy -0.17
+  ADVR-T           safe  AP 24.16  synergy -0.34
+  ADVR-P           safe  AP 23.07  synergy -0.28
+
+wrote results/seg/zoo_mamba_T2_s2_person.json
+=== T=4 Sun Aug 23 02:14:09 PM IST 2026 ===
+[protocol] T=4 stride=2 (~0.5s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 30.88+/-0.15  AUC 73.74  IoU* 22.40  IoU@.5 15.41  posrate  5.42  cons 67.1  loss 0.3500
+  oracle_FLOOR     shuffled : AP 30.49+/-1.52  AUC 71.99  IoU* 21.52  IoU@.5 12.21  posrate  3.30  cons 56.24  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP +0.39 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.33+/-0.21  AUC 99.06  IoU* 81.91  IoU@.5 81.50  posrate 12.90  cons 83.65  loss 0.0400
+  original         shuffled : AP 93.23+/-0.01  AUC 99.09  IoU* 81.77  IoU@.5 81.18  posrate 13.11  cons 78.08  loss 0.0400
+  original         SYNERGY  : dAP +0.10 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 22.15+/-0.12  AUC 67.86  IoU* 17.52  IoU@.5  1.11  posrate  0.42  cons 43.43  loss 0.3500
+  ADVR-T           shuffled : AP 22.53+/-0.37  AUC 69.52  IoU* 18.08  IoU@.5  0.01  posrate  0.00  cons 38.3  loss 0.3600
+  ADVR-T           SYNERGY  : dAP -0.38 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-P           ordered  : AP 19.23+/-0.19  AUC 66.28  IoU* 16.01  IoU@.5  0.75  posrate  0.32  cons 36.86  loss 0.3800
+  ADVR-P           shuffled : AP 18.66+/-2.97  AUC 65.91  IoU* 16.54  IoU@.5  0.00  posrate  0.00  cons 7.57  loss 0.3800
+  ADVR-P           SYNERGY  : dAP +0.57 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 30.88+/-0.15  -> leaks iff AP > 31.18
+  original         LEAK  AP 93.33  synergy +0.10
+  ADVR-T           safe  AP 22.15  synergy -0.38
+  ADVR-P           safe  AP 19.23  synergy +0.57
+
+wrote results/seg/zoo_mamba_T4_s2_person.json
+########## T-SWEEP EXTRA DONE Sun Aug 23 03:34:16 PM IST 2026 ##########

@@ -1,0 +1,110 @@
+{
+  "original": {
+    "person_IoU": 81.2,
+    "retain_mIoU": 33.5,
+    "mIoU": 34.1,
+    "residual_person": 94.1,
+    "blend_fail": 96.5,
+    "silhouette_IoU": 33.2,
+    "recover_pts": -26.6
+  },
+  "oracle": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 30.8,
+    "mIoU": 30.5,
+    "residual_person": 0.0,
+    "blend_fail": 52.6,
+    "silhouette_IoU": 16.8,
+    "recover_pts": 9.5
+  },
+  "ADVR-T": {
+    "person_IoU": 1.4,
+    "retain_mIoU": 22.5,
+    "mIoU": 22.3,
+    "residual_person": 1.1,
+    "blend_fail": 54.3,
+    "silhouette_IoU": 14.6,
+    "recover_pts": 7.7
+  },
+  "ADVR": {
+    "person_IoU": 8.3,
+    "retain_mIoU": 24.2,
+    "mIoU": 24.1,
+    "residual_person": 7.3,
+    "blend_fail": 56.5,
+    "silhouette_IoU": 15.9,
+    "recover_pts": 5.3
+  },
+  "bl_DELETE_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 17.1,
+    "mIoU": 16.9,
+    "residual_person": 0.0,
+    "blend_fail": 73.0,
+    "silhouette_IoU": 16.8,
+    "recover_pts": 13.1
+  },
+  "bl_FT_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 17.4,
+    "mIoU": 17.2,
+    "residual_person": 0.0,
+    "blend_fail": 77.5,
+    "silhouette_IoU": 18.7,
+    "recover_pts": 12.8
+  },
+  "bl_NegGrad+_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 4.9,
+    "mIoU": 4.8,
+    "residual_person": 0.0,
+    "blend_fail": 92.3,
+    "silhouette_IoU": 16.1,
+    "recover_pts": 0.0
+  },
+  "bl_NegGrad_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 0.1,
+    "mIoU": 0.1,
+    "residual_person": 0.0,
+    "blend_fail": 85.9,
+    "silhouette_IoU": 11.3,
+    "recover_pts": 0.0
+  },
+  "bl_RL_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 19.0,
+    "mIoU": 18.8,
+    "residual_person": 0.0,
+    "blend_fail": 83.2,
+    "silhouette_IoU": 21.8,
+    "recover_pts": 0.0
+  },
+  "bl_SCRUB_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 0.1,
+    "mIoU": 0.1,
+    "residual_person": 0.0,
+    "blend_fail": 85.9,
+    "silhouette_IoU": 11.3,
+    "recover_pts": 0.0
+  },
+  "bl_SSD_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 0.4,
+    "mIoU": 0.4,
+    "residual_person": 0.0,
+    "blend_fail": 83.5,
+    "silhouette_IoU": 11.8,
+    "recover_pts": 9.0
+  },
+  "bl_SalUn_s1": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 15.1,
+    "mIoU": 14.9,
+    "residual_person": 0.0,
+    "blend_fail": 82.8,
+    "silhouette_IoU": 19.0,
+    "recover_pts": 0.0
+  }
+}

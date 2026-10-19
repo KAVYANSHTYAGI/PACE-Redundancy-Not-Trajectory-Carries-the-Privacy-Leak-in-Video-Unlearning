@@ -1,0 +1,52 @@
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 31.64+/-2.01  AUC 73.61  IoU* 22.36  IoU@.5 13.98  posrate  4.29  cons 66.24  loss 0.3200
+  oracle_FLOOR     shuffled : AP 30.93+/-1.09  AUC 72.79  IoU* 21.54  IoU@.5  9.85  posrate  2.49  cons 35.94  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP +0.71 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.82+/-0.77  AUC 99.12  IoU* 81.84  IoU@.5 80.75  posrate 13.29  cons 84.53  loss 0.0700
+  original         shuffled : AP 93.29+/-0.00  AUC 99.10  IoU* 81.92  IoU@.5 81.34  posrate 13.06  cons 62.66  loss 0.0400
+  original         SYNERGY  : dAP +0.53 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR             ordered  : AP 46.92+/-0.38  AUC 83.70  IoU* 34.51  IoU@.5 32.83  posrate 10.91  cons 78.93  loss 0.2200
+  ADVR             shuffled : AP 47.69+/-0.45  AUC 84.31  IoU* 35.26  IoU@.5 35.03  posrate 12.91  cons 62.32  loss 0.2300
+  ADVR             SYNERGY  : dAP -0.77 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  ADVR-T           ordered  : AP 21.10+/-0.16  AUC 67.65  IoU* 16.60  IoU@.5  0.02  posrate  0.01  cons 14.69  loss 0.3300
+  ADVR-T           shuffled : AP 22.11+/-0.65  AUC 68.41  IoU* 17.87  IoU@.5  0.03  posrate  0.01  cons 6.8  loss 0.3600
+  ADVR-T           SYNERGY  : dAP -1.01 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_FT_s1         ordered  : AP 48.48+/-1.71  AUC 85.60  IoU* 33.75  IoU@.5 27.27  posrate  6.66  cons 73.42  loss 0.2800
+  bl_FT_s1         shuffled : AP 49.69+/-0.87  AUC 86.55  IoU* 34.48  IoU@.5 27.22  posrate  6.72  cons 51.56  loss 0.2800
+  bl_FT_s1         SYNERGY  : dAP -1.21 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_NegGrad_s1_cls60 ordered  : AP 88.70+/-0.39  AUC 98.67  IoU* 76.47  IoU@.5 76.41  posrate 13.71  cons 86.13  loss 0.0700
+  bl_NegGrad_s1_cls60 shuffled : AP 87.99+/-0.37  AUC 98.65  IoU* 75.64  IoU@.5 75.64  posrate 13.83  cons 66.1  loss 0.0800
+  bl_NegGrad_s1_cls60 SYNERGY  : dAP +0.71 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_NegGrad+_s1   ordered  : AP 68.14+/-1.28  AUC 91.35  IoU* 51.50  IoU@.5 50.63  posrate 10.89  cons 80.16  loss 0.2000
+  bl_NegGrad+_s1   shuffled : AP 68.92+/-0.87  AUC 92.50  IoU* 51.72  IoU@.5 50.80  posrate 10.92  cons 59.49  loss 0.1800
+  bl_NegGrad+_s1   SYNERGY  : dAP -0.78 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_RL_s1         ordered  : AP 86.08+/-0.40  AUC 97.96  IoU* 70.12  IoU@.5 69.72  posrate 13.84  cons 85.32  loss 0.0900
+  bl_RL_s1         shuffled : AP 86.64+/-0.50  AUC 98.00  IoU* 70.74  IoU@.5 70.49  posrate 12.70  cons 64.11  loss 0.1000
+  bl_RL_s1         SYNERGY  : dAP -0.56 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SalUn_s1      ordered  : AP 85.68+/-0.35  AUC 97.83  IoU* 68.79  IoU@.5 67.42  posrate 14.48  cons 85.99  loss 0.1200
+  bl_SalUn_s1      shuffled : AP 83.43+/-2.18  AUC 97.65  IoU* 68.86  IoU@.5 67.90  posrate 14.14  cons 66.79  loss 0.1100
+  bl_SalUn_s1      SYNERGY  : dAP +2.25 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SSD_s1        ordered  : AP 25.57+/-1.07  AUC 73.48  IoU* 20.97  IoU@.5  4.90  posrate  1.94  cons 65.05  loss 0.3200
+  bl_SSD_s1        shuffled : AP 25.03+/-1.40  AUC 73.60  IoU* 20.24  IoU@.5  6.27  posrate  2.54  cons 48.65  loss 0.3000
+  bl_SSD_s1        SYNERGY  : dAP +0.54 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SCRUB_s1_cls60 ordered  : AP 88.60+/-0.35  AUC 97.43  IoU* 67.50  IoU@.5 67.37  posrate 11.32  cons 81.73  loss 0.1000
+  bl_SCRUB_s1_cls60 shuffled : AP 88.27+/-0.14  AUC 97.27  IoU* 67.37  IoU@.5 64.72  posrate  9.29  cons 57.56  loss 0.1000
+  bl_SCRUB_s1_cls60 SYNERGY  : dAP +0.33 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_DELETE_s1     ordered  : AP 70.59+/-3.57  AUC 91.33  IoU* 50.38  IoU@.5 43.31  posrate  9.06  cons 76.24  loss 0.1900
+  bl_DELETE_s1     shuffled : AP 70.50+/-0.45  AUC 91.82  IoU* 51.22  IoU@.5 50.76  posrate 12.34  cons 64.48  loss 0.1900
+  bl_DELETE_s1     SYNERGY  : dAP +0.09 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 31.64+/-2.01  -> leaks iff AP > 35.66
+  original         LEAK  AP 93.82  synergy +0.53
+  ADVR             LEAK  AP 46.92  synergy -0.77
+  ADVR-T           safe  AP 21.10  synergy -1.01
+  bl_FT_s1         LEAK  AP 48.48  synergy -1.21
+  bl_NegGrad_s1_cls60 LEAK  AP 88.70  synergy +0.71
+  bl_NegGrad+_s1   LEAK  AP 68.14  synergy -0.78
+  bl_RL_s1         LEAK  AP 86.08  synergy -0.56
+  bl_SalUn_s1      LEAK  AP 85.68  synergy +2.25
+  bl_SSD_s1        safe  AP 25.57  synergy +0.54
+  bl_SCRUB_s1_cls60 LEAK  AP 88.60  synergy +0.33
+  bl_DELETE_s1     LEAK  AP 70.59  synergy +0.09
+
+wrote results/seg/zoo_mamba_T16_s2_person_full.json

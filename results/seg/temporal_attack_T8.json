@@ -1,0 +1,66 @@
+{
+  "oracle_FLOOR": {
+    "temporal": {
+      "AUC_mean": 70.5,
+      "AUC_std": 0.9,
+      "IoU_mean": 0.0,
+      "traj_consistency": 100.0
+    }
+  },
+  "original": {
+    "temporal": {
+      "AUC_mean": 99.1,
+      "AUC_std": 0.0,
+      "IoU_mean": 81.8,
+      "traj_consistency": 89.8
+    }
+  },
+  "DELETE_logitmask": {
+    "temporal": {
+      "AUC_mean": 92.8,
+      "AUC_std": 0.2,
+      "IoU_mean": 48.7,
+      "traj_consistency": 87.8
+    }
+  },
+  "ADVR": {
+    "temporal": {
+      "AUC_mean": 80.5,
+      "AUC_std": 1.2,
+      "IoU_mean": 30.8,
+      "traj_consistency": 87.3
+    }
+  },
+  "ADVR-T": {
+    "temporal": {
+      "AUC_mean": 66.0,
+      "AUC_std": 1.2,
+      "IoU_mean": 0.0,
+      "traj_consistency": 82.6
+    }
+  },
+  "bl_SSD_s1": {
+    "temporal": {
+      "AUC_mean": 72.2,
+      "AUC_std": 1.1,
+      "IoU_mean": 0.8,
+      "traj_consistency": 54.7
+    }
+  },
+  "bl_SalUn_s1": {
+    "temporal": {
+      "AUC_mean": 97.1,
+      "AUC_std": 0.1,
+      "IoU_mean": 62.2,
+      "traj_consistency": 93.1
+    }
+  },
+  "bl_DELETE_s1": {
+    "temporal": {
+      "AUC_mean": 89.1,
+      "AUC_std": 1.0,
+      "IoU_mean": 44.2,
+      "traj_consistency": 88.1
+    }
+  }
+}

@@ -1,0 +1,89 @@
+=========== CLIP_LEN=2 (bs=8)  2026-07-26 12:04:54 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  oracle_FLOOR       temporal: AUC 73.1+/-0.3 IoU 17.7 cons 93.7
+  original           temporal: AUC 99.1+/-0.1 IoU 82.0 cons 88.5
+  DELETE_logitmask   temporal: AUC 90.1+/-0.2 IoU 42.2 cons 97.7
+  ADVR               temporal: AUC 85.4+/-0.7 IoU 35.5 cons 98.5
+  ADVR-T             temporal: AUC 67.4+/-0.3 IoU 7.0 cons 94.9
+  bl_SSD_s1          temporal: AUC 77.5+/-0.3 IoU 4.9 cons 85.8
+  bl_SalUn_s1        temporal: AUC 94.6+/-2.2 IoU 53.7 cons 94.2
+  bl_DELETE_s1       temporal: AUC 89.7+/-0.8 IoU 46.0 cons 97.7
+
+floor: temporal_AUC 73.1+/-0.3 (frame surface skipped this run, see the CLIP_LEN=3 baseline json for it)
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           temporal:LEAK
+  DELETE_logitmask   temporal:LEAK
+  ADVR               temporal:LEAK
+  ADVR-T             temporal:safe
+  bl_SSD_s1          temporal:LEAK
+  bl_SalUn_s1        temporal:LEAK
+  bl_DELETE_s1       temporal:LEAK
+
+wrote results/seg/temporal_attack_T2.json
+=========== CLIP_LEN=5 (bs=4)  2026-07-26 13:25:59 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  oracle_FLOOR       temporal: AUC 71.5+/-0.5 IoU 5.8 cons 50.3
+  original           temporal: AUC 99.3+/-0.1 IoU 81.8 cons 91.0
+  DELETE_logitmask   temporal: AUC 93.2+/-0.2 IoU 44.5 cons 91.3
+  ADVR               temporal: AUC 82.9+/-0.5 IoU 30.5 cons 90.0
+  ADVR-T             temporal: AUC 67.3+/-0.5 IoU 0.2 cons 56.8
+  bl_SSD_s1          temporal: AUC 74.4+/-1.1 IoU 1.8 cons 57.5
+  bl_SalUn_s1        temporal: AUC 97.3+/-0.5 IoU 70.0 cons 92.5
+  bl_DELETE_s1       temporal: AUC 91.7+/-0.3 IoU 48.7 cons 91.7
+
+floor: temporal_AUC 71.5+/-0.5 (frame surface skipped this run, see the CLIP_LEN=3 baseline json for it)
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           temporal:LEAK
+  DELETE_logitmask   temporal:LEAK
+  ADVR               temporal:LEAK
+  ADVR-T             temporal:safe
+  bl_SSD_s1          temporal:LEAK
+  bl_SalUn_s1        temporal:LEAK
+  bl_DELETE_s1       temporal:LEAK
+
+wrote results/seg/temporal_attack_T5.json
+=========== CLIP_LEN=8 (bs=2)  2026-07-26 15:35:53 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  oracle_FLOOR       temporal: AUC 70.5+/-0.9 IoU 0.0 cons 100.0
+  original           temporal: AUC 99.1+/-0.0 IoU 81.8 cons 89.8
+  DELETE_logitmask   temporal: AUC 92.8+/-0.2 IoU 48.7 cons 87.8
+  ADVR               temporal: AUC 80.5+/-1.2 IoU 30.8 cons 87.3
+  ADVR-T             temporal: AUC 66.0+/-1.2 IoU 0.0 cons 82.6
+  bl_SSD_s1          temporal: AUC 72.2+/-1.1 IoU 0.8 cons 54.7
+  bl_SalUn_s1        temporal: AUC 97.1+/-0.1 IoU 62.2 cons 93.1
+  bl_DELETE_s1       temporal: AUC 89.1+/-1.0 IoU 44.2 cons 88.1
+
+floor: temporal_AUC 70.5+/-0.9 (frame surface skipped this run, see the CLIP_LEN=3 baseline json for it)
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           temporal:LEAK
+  DELETE_logitmask   temporal:LEAK
+  ADVR               temporal:LEAK
+  ADVR-T             temporal:safe
+  bl_SSD_s1          temporal:safe
+  bl_SalUn_s1        temporal:LEAK
+  bl_DELETE_s1       temporal:LEAK
+
+wrote results/seg/temporal_attack_T8.json
+=========== CLIP_LEN=16 (bs=1)  2026-07-26 18:10:46 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+  oracle_FLOOR       temporal: AUC 67.3+/-1.3 IoU 0.7 cons 73.0
+  original           temporal: AUC 98.8+/-0.0 IoU 81.0 cons 90.2
+  DELETE_logitmask   temporal: AUC 89.0+/-1.4 IoU 41.8 cons 87.1
+  ADVR               temporal: AUC 76.7+/-1.6 IoU 25.6 cons 86.2
+  ADVR-T             temporal: AUC 61.2+/-1.3 IoU 0.0 cons 100.0
+  bl_SSD_s1          temporal: AUC 70.0+/-0.6 IoU 1.0 cons 55.0
+  bl_SalUn_s1        temporal: AUC 96.3+/-0.2 IoU 57.6 cons 88.1
+  bl_DELETE_s1       temporal: AUC 89.4+/-0.9 IoU 42.5 cons 88.9
+
+floor: temporal_AUC 67.3+/-1.3 (frame surface skipped this run, see the CLIP_LEN=3 baseline json for it)
+a method LEAKS on a surface iff its AUC > floor_mean + 2*floor_std
+  original           temporal:LEAK
+  DELETE_logitmask   temporal:LEAK
+  ADVR               temporal:LEAK
+  ADVR-T             temporal:safe
+  bl_SSD_s1          temporal:LEAK
+  bl_SalUn_s1        temporal:LEAK
+  bl_DELETE_s1       temporal:LEAK
+
+wrote results/seg/temporal_attack_T16.json
+############ SWEEP DONE  2026-07-26 21:14:49 ############

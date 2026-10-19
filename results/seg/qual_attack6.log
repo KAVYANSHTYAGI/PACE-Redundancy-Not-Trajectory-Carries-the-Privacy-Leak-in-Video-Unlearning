@@ -1,0 +1,17 @@
+[person] well-covered train clips: 200/1200 scanned
+[person] original: prob min 0.000 max 1.000 mean 0.545
+[person] RL: prob min 0.000 max 0.997 mean 0.608
+[person] SCRUB: prob min 0.000 max 1.000 mean 0.557
+[person] SalUn: prob min 0.000 max 0.991 mean 0.684
+[person] PACE-T: prob min 0.002 max 0.914 mean 0.336
+[person] PACE: prob min 0.000 max 0.339 mean 0.112
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.007879601119131236..1.0000000000315585].
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.020852507908865836..1.0000000002125087].
+[car] well-covered train clips: 200/1200 scanned
+[car] original: prob min 0.000 max 0.393 mean 0.001
+[car] RL: prob min 0.000 max 0.006 mean 0.000
+[car] SCRUB: prob min 0.000 max 1.000 mean 0.044
+[car] SalUn: prob min 0.000 max 0.002 mean 0.000
+[car] PACE-T: prob min 0.000 max 0.984 mean 0.011
+[car] PACE: prob min 0.000 max 0.592 mean 0.000
+wrote paper/figures/qualitative_attack.png

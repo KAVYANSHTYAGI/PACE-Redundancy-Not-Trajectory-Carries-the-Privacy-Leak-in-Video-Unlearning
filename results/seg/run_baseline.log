@@ -1,0 +1,5 @@
+[run_baseline] training original (4 epochs, bs6)
+[run_baseline] original done
+[run_baseline] training oracle (4 epochs, bs6)
+[run_baseline] oracle done
+[run_baseline] BOTH DONE

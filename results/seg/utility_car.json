@@ -1,0 +1,62 @@
+{
+  "oracle_FLOOR": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 31.638451222537984,
+    "mIoU": 31.305414893879686
+  },
+  "original": {
+    "person_IoU": 33.47189307947574,
+    "retain_mIoU": 31.907381985361965,
+    "mIoU": 31.92385052319474
+  },
+  "bl_FT_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 6.562531040905227,
+    "mIoU": 6.493451766790435
+  },
+  "bl_NegGrad_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 0.06827656119855584,
+    "mIoU": 0.06755786055436051
+  },
+  "bl_NegGrad+_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 3.643557093142597,
+    "mIoU": 3.605203860583201
+  },
+  "bl_RL_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 3.7362494461753903,
+    "mIoU": 3.6969205046367017
+  },
+  "bl_SalUn_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 4.538246388215699,
+    "mIoU": 4.4904753736029015
+  },
+  "bl_SSD_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 0.0002129584994373717,
+    "mIoU": 0.0002107168310222415
+  },
+  "bl_SCRUB_s1_cls48": {
+    "person_IoU": 20.33213199205749,
+    "retain_mIoU": 27.54483894526027,
+    "mIoU": 27.468915714173924
+  },
+  "bl_DELETE_s1_cls48": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 8.326611730227839,
+    "mIoU": 8.238963185699124
+  },
+  "ADVR-T_car": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 20.20910000831592,
+    "mIoU": 19.996372639807337
+  },
+  "ADVR-P_car": {
+    "person_IoU": 0.0,
+    "retain_mIoU": 19.778802357209624,
+    "mIoU": 19.570604437660048
+  }
+}

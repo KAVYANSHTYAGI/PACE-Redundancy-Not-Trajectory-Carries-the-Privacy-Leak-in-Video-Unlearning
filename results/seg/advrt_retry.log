@@ -1,0 +1,4 @@
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-T] 45976 train units, epochs=4, clip_len=3
+  saved checkpoints/unlearned_ADVR-T.pth
+[ADVR-T] trained in 822.2min

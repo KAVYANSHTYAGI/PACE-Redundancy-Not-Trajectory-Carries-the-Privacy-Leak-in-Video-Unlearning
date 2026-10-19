@@ -1,0 +1,22 @@
+well-covered train clips: 200/1200 scanned
+examples (clip, frame): [(256, 2), (278, 0), (229, 6)]
+  original ex0: prob max 1.000 mean 0.557
+  original ex1: prob max 0.999 mean 0.655
+  original ex2: prob max 1.000 mean 0.456
+  RL ex0: prob max 0.994 mean 0.645
+  RL ex1: prob max 0.989 mean 0.603
+  RL ex2: prob max 0.988 mean 0.531
+  SCRUB ex0: prob max 1.000 mean 0.536
+  SCRUB ex1: prob max 1.000 mean 0.666
+  SCRUB ex2: prob max 1.000 mean 0.361
+  SalUn ex0: prob max 0.971 mean 0.521
+  SalUn ex1: prob max 0.983 mean 0.490
+  SalUn ex2: prob max 0.988 mean 0.363
+  PACE-T ex0: prob max 0.624 mean 0.087
+  PACE-T ex1: prob max 0.822 mean 0.495
+  PACE-T ex2: prob max 0.913 mean 0.178
+  PACE ex0: prob max 0.704 mean 0.107
+  PACE ex1: prob max 0.558 mean 0.068
+  PACE ex2: prob max 0.662 mean 0.090
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [0.009074888749777148..1.0000000003252338].
+wrote paper/figures/qualitative_attack_multi.png

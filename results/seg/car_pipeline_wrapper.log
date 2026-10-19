@@ -1,0 +1,129 @@
+=========== [1/4] oracle_car / original_car  2026-07-31 17:44:26 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[vspw_original_deeplabv3r50_cls48] 198242 train frames, 24502 val frames, 24 epochs, bs6 res512
+[vspw_original_deeplabv3r50_cls48] epoch 1/24 loss 1.886 lr 0.00962
+[vspw_original_deeplabv3r50_cls48] epoch 2/24 loss 1.125 lr 0.00925 | person_IoU 46.3 retain_mIoU 28.1 mIoU 28.2
+[vspw_original_deeplabv3r50_cls48] epoch 3/24 loss 0.879 lr 0.00887
+[vspw_original_deeplabv3r50_cls48] epoch 4/24 loss 0.757 lr 0.00849 | person_IoU 52.3 retain_mIoU 27.6 mIoU 27.8
+[vspw_original_deeplabv3r50_cls48] epoch 5/24 loss 0.679 lr 0.00810
+[vspw_original_deeplabv3r50_cls48] epoch 6/24 loss 0.630 lr 0.00772 | person_IoU 46.5 retain_mIoU 29.1 mIoU 29.3
+[vspw_original_deeplabv3r50_cls48] epoch 7/24 loss 0.577 lr 0.00733
+[vspw_original_deeplabv3r50_cls48] epoch 8/24 loss 0.546 lr 0.00694 | person_IoU 34.5 retain_mIoU 28.1 mIoU 28.1
+[vspw_original_deeplabv3r50_cls48] epoch 9/24 loss 0.497 lr 0.00655
+[vspw_original_deeplabv3r50_cls48] epoch 10/24 loss 0.486 lr 0.00616 | person_IoU 44.6 retain_mIoU 30.0 mIoU 30.1
+[vspw_original_deeplabv3r50_cls48] epoch 11/24 loss 0.449 lr 0.00576
+[vspw_original_deeplabv3r50_cls48] epoch 12/24 loss 0.413 lr 0.00536 | person_IoU 57.5 retain_mIoU 29.0 mIoU 29.2
+[vspw_original_deeplabv3r50_cls48] epoch 13/24 loss 0.394 lr 0.00496
+[vspw_original_deeplabv3r50_cls48] epoch 14/24 loss 0.377 lr 0.00455 | person_IoU 48.6 retain_mIoU 30.2 mIoU 30.3
+[vspw_original_deeplabv3r50_cls48] epoch 15/24 loss 0.357 lr 0.00414
+[vspw_original_deeplabv3r50_cls48] epoch 16/24 loss 0.332 lr 0.00372 | person_IoU 43.1 retain_mIoU 29.9 mIoU 30.0
+[vspw_original_deeplabv3r50_cls48] epoch 17/24 loss 0.297 lr 0.00330
+[vspw_original_deeplabv3r50_cls48] epoch 18/24 loss 0.264 lr 0.00287 | person_IoU 47.8 retain_mIoU 29.0 mIoU 29.2
+[vspw_original_deeplabv3r50_cls48] epoch 19/24 loss 0.243 lr 0.00244
+[vspw_original_deeplabv3r50_cls48] epoch 20/24 loss 0.223 lr 0.00199 | person_IoU 37.6 retain_mIoU 31.1 mIoU 31.1
+[vspw_original_deeplabv3r50_cls48] epoch 21/24 loss 0.198 lr 0.00154
+[vspw_original_deeplabv3r50_cls48] epoch 22/24 loss 0.180 lr 0.00107 | person_IoU 39.2 retain_mIoU 31.1 mIoU 31.1
+[vspw_original_deeplabv3r50_cls48] epoch 23/24 loss 0.161 lr 0.00057
+[vspw_original_deeplabv3r50_cls48] epoch 24/24 loss 0.148 lr 0.00000 | person_IoU 42.7 retain_mIoU 30.9 mIoU 31.0
+[vspw_original_deeplabv3r50_cls48] DONE 61.5h -> checkpoints/vspw_original_deeplabv3r50_cls48.pth
+[vspw_original_deeplabv3r50_cls48] val person_IoU 42.7 retain_mIoU 30.9 mIoU 31.0
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[vspw_oracle_deeplabv3r50_cls48] 198242 train frames, 24502 val frames, 24 epochs, bs6 res512
+[vspw_oracle_deeplabv3r50_cls48] epoch 1/24 loss 1.903 lr 0.00962
+[vspw_oracle_deeplabv3r50_cls48] epoch 2/24 loss 1.136 lr 0.00925 | person_IoU 0.0 retain_mIoU 27.8 mIoU 27.6
+[vspw_oracle_deeplabv3r50_cls48] epoch 3/24 loss 0.890 lr 0.00887
+[vspw_oracle_deeplabv3r50_cls48] epoch 4/24 loss 0.769 lr 0.00849 | person_IoU 0.0 retain_mIoU 26.7 mIoU 26.5
+[vspw_oracle_deeplabv3r50_cls48] epoch 5/24 loss 0.693 lr 0.00810
+[vspw_oracle_deeplabv3r50_cls48] epoch 6/24 loss 0.629 lr 0.00772 | person_IoU 0.0 retain_mIoU 28.6 mIoU 28.4
+[vspw_oracle_deeplabv3r50_cls48] epoch 7/24 loss 0.593 lr 0.00733
+[vspw_oracle_deeplabv3r50_cls48] epoch 8/24 loss 0.546 lr 0.00694 | person_IoU 0.0 retain_mIoU 30.9 mIoU 30.7
+[vspw_oracle_deeplabv3r50_cls48] epoch 9/24 loss 0.520 lr 0.00655
+[vspw_oracle_deeplabv3r50_cls48] epoch 10/24 loss 0.484 lr 0.00616 | person_IoU 0.0 retain_mIoU 30.1 mIoU 29.9
+[vspw_oracle_deeplabv3r50_cls48] epoch 11/24 loss 0.458 lr 0.00576
+[vspw_oracle_deeplabv3r50_cls48] epoch 12/24 loss 0.433 lr 0.00536 | person_IoU 0.0 retain_mIoU 27.5 mIoU 27.3
+[vspw_oracle_deeplabv3r50_cls48] epoch 13/24 loss 0.403 lr 0.00496
+[vspw_oracle_deeplabv3r50_cls48] epoch 14/24 loss 0.380 lr 0.00455 | person_IoU 0.0 retain_mIoU 29.5 mIoU 29.3
+[vspw_oracle_deeplabv3r50_cls48] epoch 15/24 loss 0.364 lr 0.00414
+[vspw_oracle_deeplabv3r50_cls48] epoch 16/24 loss 0.330 lr 0.00372 | person_IoU 0.0 retain_mIoU 30.2 mIoU 29.9
+[vspw_oracle_deeplabv3r50_cls48] epoch 17/24 loss 0.310 lr 0.00330
+[vspw_oracle_deeplabv3r50_cls48] epoch 18/24 loss 0.288 lr 0.00287 | person_IoU 0.0 retain_mIoU 30.3 mIoU 30.1
+[vspw_oracle_deeplabv3r50_cls48] epoch 19/24 loss 0.248 lr 0.00244
+[vspw_oracle_deeplabv3r50_cls48] epoch 20/24 loss 0.223 lr 0.00199 | person_IoU 0.0 retain_mIoU 32.2 mIoU 31.9
+[vspw_oracle_deeplabv3r50_cls48] epoch 21/24 loss 0.203 lr 0.00154
+[vspw_oracle_deeplabv3r50_cls48] epoch 22/24 loss 0.185 lr 0.00107 | person_IoU 0.0 retain_mIoU 31.9 mIoU 31.7
+[vspw_oracle_deeplabv3r50_cls48] epoch 23/24 loss 0.168 lr 0.00057
+[vspw_oracle_deeplabv3r50_cls48] epoch 24/24 loss 0.152 lr 0.00000 | person_IoU 0.0 retain_mIoU 32.4 mIoU 32.1
+[vspw_oracle_deeplabv3r50_cls48] DONE 61.4h -> checkpoints/vspw_oracle_deeplabv3r50_cls48.pth
+[vspw_oracle_deeplabv3r50_cls48] val person_IoU 0.0 retain_mIoU 32.4 mIoU 32.1
+=========== [2/4] 8 baselines  2026-08-05 20:45:19 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[FT] training with {'epochs': 2, 'lr': 0.01}
+[FT] DONE 25.0min -> checkpoints/unlearned_bl_FT_s1_cls48.pth
+[NegGrad] training with {'epochs': 1, 'lr': 0.0001}
+[NegGrad] DONE 12.5min -> checkpoints/unlearned_bl_NegGrad_s1_cls48.pth
+[NegGrad+] training with {'epochs': 1, 'lr': 0.01, 'beta': 0.999}
+[NegGrad+] DONE 13.1min -> checkpoints/unlearned_bl_NegGrad+_s1_cls48.pth
+[RL] training with {'epochs': 2, 'lr': 0.013}
+[RL] DONE 26.1min -> checkpoints/unlearned_bl_RL_s1_cls48.pth
+[SalUn] training with {'epochs': 2, 'lr': 0.013, 'threshold': 0.5}
+[SalUn] DONE 26.5min -> checkpoints/unlearned_bl_SalUn_s1_cls48.pth
+[SSD] training with {'selection_weighting': 10.0, 'dampening_constant': 1.0}
+[SSD] DONE 24.6min -> checkpoints/unlearned_bl_SSD_s1_cls48.pth
+[SCRUB] training with {'epochs': 2, 'lr': 0.0005, 'msteps': 1}
+[SCRUB] DONE 52.4min -> checkpoints/unlearned_bl_SCRUB_s1_cls48.pth
+[DELETE] training with {'epochs': 2, 'lr': 0.01}
+[DELETE] DONE 34.5min -> checkpoints/unlearned_bl_DELETE_s1_cls48.pth
+=========== [3/4] ADVR-T (car, epoch-scaled)  2026-08-06 00:20:08 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-T] 6077 train units, epochs=30, clip_len=3
+  saved checkpoints/unlearned_ADVR-T_car.pth
+[ADVR-T] trained in 827.0min
+=========== [3/4] ADVR-P (car, epoch-scaled)  2026-08-06 14:07:10 ===========
+[VSPWSeg] skipped 2 orphan mask(s) with no matching frame
+[ADVR-P] 6077 train units, epochs=30, clip_len=3
+  saved checkpoints/unlearned_ADVR-P_car.pth
+[ADVR-P] trained in 831.7min
+=========== [4/4] corrected protocol, mamba/T=16/stride=2  2026-08-07 03:58:56 ===========
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 18.10+/-5.60  AUC 75.65  IoU* 14.23  IoU@.5 10.16  posrate  3.01  cons 57.19  loss 0.2300
+  oracle_FLOOR     shuffled : AP 15.91+/-2.16  AUC 71.60  IoU* 13.46  IoU@.5 10.75  posrate  4.05  cons 36.4  loss 0.2300
+  oracle_FLOOR     SYNERGY  : dAP +2.19 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 80.45+/-1.62  AUC 94.66  IoU* 66.84  IoU@.5 66.81  posrate  6.34  cons 80.7  loss 0.0200
+  original         shuffled : AP 80.55+/-0.13  AUC 94.61  IoU* 67.09  IoU@.5 67.08  posrate  6.29  cons 57.99  loss 0.0100
+  original         SYNERGY  : dAP -0.10 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_FT_s1_cls48   ordered  : AP 32.55+/-3.21  AUC 86.17  IoU* 26.84  IoU@.5 23.70  posrate  6.64  cons 77.96  loss 0.1000
+  bl_FT_s1_cls48   shuffled : AP 30.80+/-1.81  AUC 85.84  IoU* 26.00  IoU@.5 24.57  posrate  8.38  cons 57.49  loss 0.1000
+  bl_FT_s1_cls48   SYNERGY  : dAP +1.75 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_NegGrad_s1_cls48 ordered  : AP  6.97+/-0.27  AUC 54.58  IoU*  6.97  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  bl_NegGrad_s1_cls48 shuffled : AP  6.74+/-0.23  AUC 53.30  IoU*  6.89  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3600
+  bl_NegGrad_s1_cls48 SYNERGY  : dAP +0.23 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_NegGrad+_s1_cls48 ordered  : AP 16.79+/-2.99  AUC 73.46  IoU* 14.29  IoU@.5  6.37  posrate  2.91  cons 63.85  loss 0.1100
+  bl_NegGrad+_s1_cls48 shuffled : AP 14.38+/-0.43  AUC 74.28  IoU* 12.43  IoU@.5  8.97  posrate  5.59  cons 53.47  loss 0.1600
+  bl_NegGrad+_s1_cls48 SYNERGY  : dAP +2.41 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_RL_s1_cls48   ordered  : AP 57.61+/-4.23  AUC 93.16  IoU* 40.22  IoU@.5 38.38  posrate 10.58  cons 85.24  loss 0.1100
+  bl_RL_s1_cls48   shuffled : AP 61.33+/-1.31  AUC 93.29  IoU* 42.66  IoU@.5 40.38  posrate  5.57  cons 71.47  loss 0.0800
+  bl_RL_s1_cls48   SYNERGY  : dAP -3.72 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SalUn_s1_cls48 ordered  : AP 62.85+/-0.03  AUC 94.38  IoU* 43.63  IoU@.5 41.72  posrate  9.09  cons 83.89  loss 0.1100
+  bl_SalUn_s1_cls48 shuffled : AP 63.48+/-0.56  AUC 93.93  IoU* 43.13  IoU@.5 42.90  posrate  7.80  cons 68.49  loss 0.0800
+  bl_SalUn_s1_cls48 SYNERGY  : dAP -0.63 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SSD_s1_cls48  ordered  : AP  7.48+/-0.34  AUC 57.25  IoU*  7.44  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3200
+  bl_SSD_s1_cls48  shuffled : AP  6.58+/-0.29  AUC 53.04  IoU*  6.91  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.3300
+  bl_SSD_s1_cls48  SYNERGY  : dAP +0.90 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+Traceback (most recent call last):
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/scripts/run_temporal_protocol.py", line 230, in <module>
+    main()
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/scripts/run_temporal_protocol.py", line 160, in main
+    r = eval_temporal_attacker(D, model, cvl, device, transform=transform,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/attack.py", line 527, in eval_temporal_attacker
+    hist.add(prob, M)
+  File "/home/kavyansh/anaconda3/envs/myenv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavyansh/MySSD/research project/russo_work/machine_unlearning/project3/seg/metrics.py", line 57, in add
+    pos = torch.bincount(idx[g], minlength=self.bins)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: bincount only supports 1-d non-negative integral inputs.

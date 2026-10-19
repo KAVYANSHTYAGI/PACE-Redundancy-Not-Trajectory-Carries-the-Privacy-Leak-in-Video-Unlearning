@@ -1,0 +1,28 @@
+########## PHASE A: does synergy exist?  2026-07-27 00:55:24 ##########
+===== mamba | T=16 stride=1 =====
+[protocol] T=16 stride=1 (~1.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 29.48+/-0.46  AUC 72.60  IoU* 21.28  IoU@.5 10.88  posrate  3.65  cons 71.75  loss 0.3400
+  oracle_FLOOR     shuffled : AP 28.62+/-2.56  AUC 71.04  IoU* 20.82  IoU@.5 15.65  posrate  7.70  cons 64.85  loss 0.3500
+  oracle_FLOOR     SYNERGY  : dAP +0.86 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.20+/-0.04  AUC 99.10  IoU* 81.89  IoU@.5 81.58  posrate 12.83  cons 89.92  loss 0.0500
+  original         shuffled : AP 93.21+/-0.21  AUC 99.10  IoU* 81.84  IoU@.5 81.15  posrate 13.17  cons 72.79  loss 0.0400
+  original         SYNERGY  : dAP -0.01 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 29.48+/-0.46  -> leaks iff AP > 30.40
+  original         LEAK  AP 93.20  synergy -0.01
+
+wrote results/seg/zoo_mamba_T16_s1.json
+===== mamba | T=16 stride=2 =====
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 29.72+/-0.43  AUC 72.58  IoU* 22.16  IoU@.5 13.45  posrate  4.73  cons 67.33  loss 0.2800
+  oracle_FLOOR     shuffled : AP 30.15+/-1.70  AUC 73.87  IoU* 21.99  IoU@.5 12.92  posrate  4.19  cons 51.45  loss 0.3300
+  oracle_FLOOR     SYNERGY  : dAP -0.43 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 93.43+/-0.10  AUC 99.10  IoU* 81.88  IoU@.5 81.66  posrate 12.89  cons 83.62  loss 0.0400
+  original         shuffled : AP 92.97+/-0.24  AUC 99.09  IoU* 81.58  IoU@.5 81.09  posrate 12.96  cons 62.63  loss 0.0400
+  original         SYNERGY  : dAP +0.46 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 29.72+/-0.43  -> leaks iff AP > 30.58
+  original         LEAK  AP 93.43  synergy +0.46
+
+wrote results/seg/zoo_mamba_T16_s2.json
+########## ZOO DONE  2026-07-27 05:06:50 ##########

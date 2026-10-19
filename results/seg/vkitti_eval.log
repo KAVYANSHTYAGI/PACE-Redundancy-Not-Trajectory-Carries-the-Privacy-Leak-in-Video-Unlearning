@@ -1,0 +1,52 @@
+[protocol] T=16 stride=2 (~2.1s span) attacker=mamba phys_bs=1 accum=4 (eff 4 clips) steps=500 trials=2 | train 4000 clips / eval 800 clips
+  oracle_FLOOR     ordered  : AP 50.71+/-0.71  AUC 91.70  IoU* 37.03  IoU@.5 37.01  posrate  8.33  cons 66.79  loss 0.0600
+  oracle_FLOOR     shuffled : AP 55.21+/-3.58  AUC 93.00  IoU* 40.25  IoU@.5 40.12  posrate  8.29  cons 42.96  loss 0.0600
+  oracle_FLOOR     SYNERGY  : dAP -4.50 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  original         ordered  : AP 88.67+/-1.27  AUC 99.48  IoU* 80.08  IoU@.5 79.60  posrate  7.70  cons 66.21  loss 0.0100
+  original         shuffled : AP 89.18+/-0.77  AUC 99.50  IoU* 80.27  IoU@.5 79.54  posrate  7.75  cons 43.87  loss 0.0100
+  original         SYNERGY  : dAP -0.51 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_FT_s1_vkitti  ordered  : AP 41.43+/-2.32  AUC 92.48  IoU* 31.63  IoU@.5 28.04  posrate 18.24  cons 76.36  loss 0.0500
+  bl_FT_s1_vkitti  shuffled : AP 31.19+/-2.69  AUC 91.23  IoU* 27.99  IoU@.5 25.38  posrate 21.83  cons 66.61  loss 0.0500
+  bl_FT_s1_vkitti  SYNERGY  : dAP +10.24 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_NegGrad_s1_vkitti ordered  : AP  9.67+/-1.41  AUC 59.97  IoU*  8.09  IoU@.5  3.55  posrate 12.39  cons 29.02  loss 0.1700
+  bl_NegGrad_s1_vkitti shuffled : AP  9.31+/-0.01  AUC 55.54  IoU*  7.98  IoU@.5  2.42  posrate  0.36  cons 8.08  loss 0.1900
+  bl_NegGrad_s1_vkitti SYNERGY  : dAP +0.36 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_NegGrad+_s1_vkitti ordered  : AP 33.57+/-6.40  AUC 89.45  IoU* 24.85  IoU@.5 14.19  posrate  2.82  cons 46.44  loss 0.1300
+  bl_NegGrad+_s1_vkitti shuffled : AP 30.18+/-1.28  AUC 88.50  IoU* 23.35  IoU@.5 20.30  posrate  6.26  cons 41.58  loss 0.1300
+  bl_NegGrad+_s1_vkitti SYNERGY  : dAP +3.39 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_RL_s1_vkitti  ordered  : AP 89.17+/-1.08  AUC 99.01  IoU* 68.95  IoU@.5 68.29  posrate  7.54  cons 69.83  loss 0.0400
+  bl_RL_s1_vkitti  shuffled : AP 90.52+/-0.19  AUC 99.24  IoU* 71.45  IoU@.5 70.93  posrate  7.47  cons 46.57  loss 0.0300
+  bl_RL_s1_vkitti  SYNERGY  : dAP -1.35 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SalUn_s1_vkitti ordered  : AP 92.42+/-0.49  AUC 99.33  IoU* 74.61  IoU@.5 74.18  posrate  6.64  cons 65.3  loss 0.0200
+  bl_SalUn_s1_vkitti shuffled : AP 92.64+/-0.05  AUC 99.34  IoU* 74.90  IoU@.5 74.49  posrate  6.46  cons 42.33  loss 0.0200
+  bl_SalUn_s1_vkitti SYNERGY  : dAP -0.22 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SSD_s1_vkitti ordered  : AP  6.87+/-0.19  AUC 50.22  IoU*  6.95  IoU@.5  0.00  posrate  0.00  cons nan  loss 0.2200
+  bl_SSD_s1_vkitti shuffled : AP  8.36+/-2.56  AUC 57.25  IoU*  8.03  IoU@.5  3.74  posrate  2.76  cons 98.33  loss 0.2100
+  bl_SSD_s1_vkitti SYNERGY  : dAP -1.49 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_SCRUB_s1_vkitti ordered  : AP 95.66+/-0.95  AUC 99.72  IoU* 83.08  IoU@.5 82.35  posrate  7.32  cons 67.14  loss 0.0100
+  bl_SCRUB_s1_vkitti shuffled : AP 95.48+/-0.98  AUC 99.70  IoU* 82.23  IoU@.5 81.85  posrate  7.30  cons 43.47  loss 0.0100
+  bl_SCRUB_s1_vkitti SYNERGY  : dAP +0.18 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  bl_DELETE_s1_vkitti ordered  : AP 79.56+/-0.86  AUC 98.61  IoU* 61.33  IoU@.5 50.68  posrate 12.19  cons 70.99  loss 0.0200
+  bl_DELETE_s1_vkitti shuffled : AP 82.56+/-1.81  AUC 98.84  IoU* 64.35  IoU@.5 55.29  posrate 11.07  cons 49.48  loss 0.0200
+  bl_DELETE_s1_vkitti SYNERGY  : dAP -3.00 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  TAE_vkitti       ordered  : AP 17.12+/-2.24  AUC 78.71  IoU* 14.50  IoU@.5 10.68  posrate  5.24  cons 53.61  loss 0.1100
+  TAE_vkitti       shuffled : AP 18.58+/-1.45  AUC 81.36  IoU* 15.60  IoU@.5 12.19  posrate  6.52  cons 33.75  loss 0.1200
+  TAE_vkitti       SYNERGY  : dAP -1.46 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+  PACE_vkitti      ordered  : AP  9.11+/-0.79  AUC 65.97  IoU*  9.51  IoU@.5  0.08  posrate  0.16  cons 19.86  loss 0.1500
+  PACE_vkitti      shuffled : AP  8.13+/-0.62  AUC 62.52  IoU*  8.94  IoU@.5  0.20  posrate  0.61  cons 22.66  loss 0.1600
+  PACE_vkitti      SYNERGY  : dAP +0.98 (ordered - time-shuffled; >0 = genuinely trajectory-borne)
+
+floor(ordered) AP 50.71+/-0.71  -> leaks iff AP > 52.13
+  original         LEAK  AP 88.67  synergy -0.51
+  bl_FT_s1_vkitti  safe  AP 41.43  synergy +10.24
+  bl_NegGrad_s1_vkitti safe  AP  9.67  synergy +0.36
+  bl_NegGrad+_s1_vkitti safe  AP 33.57  synergy +3.39
+  bl_RL_s1_vkitti  LEAK  AP 89.17  synergy -1.35
+  bl_SalUn_s1_vkitti LEAK  AP 92.42  synergy -0.22
+  bl_SSD_s1_vkitti safe  AP  6.87  synergy -1.49
+  bl_SCRUB_s1_vkitti LEAK  AP 95.66  synergy +0.18
+  bl_DELETE_s1_vkitti LEAK  AP 79.56  synergy -3.00
+  TAE_vkitti       safe  AP 17.12  synergy -1.46
+  PACE_vkitti      safe  AP  9.11  synergy +0.98
+
+wrote results/seg/zoo_mamba_T16_s2_vkitti.json

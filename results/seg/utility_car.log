@@ -1,0 +1,13 @@
+oracle_FLOOR         car_IoU   0.0  retain_mIoU  31.6  mIoU  31.3
+original             car_IoU  33.5  retain_mIoU  31.9  mIoU  31.9
+bl_FT_s1_cls48       car_IoU   0.0  retain_mIoU   6.6  mIoU   6.5
+bl_NegGrad_s1_cls48  car_IoU   0.0  retain_mIoU   0.1  mIoU   0.1
+bl_NegGrad+_s1_cls48 car_IoU   0.0  retain_mIoU   3.6  mIoU   3.6
+bl_RL_s1_cls48       car_IoU   0.0  retain_mIoU   3.7  mIoU   3.7
+bl_SalUn_s1_cls48    car_IoU   0.0  retain_mIoU   4.5  mIoU   4.5
+bl_SSD_s1_cls48      car_IoU   0.0  retain_mIoU   0.0  mIoU   0.0
+bl_SCRUB_s1_cls48    car_IoU  20.3  retain_mIoU  27.5  mIoU  27.5
+bl_DELETE_s1_cls48   car_IoU   0.0  retain_mIoU   8.3  mIoU   8.2
+ADVR-T_car           car_IoU   0.0  retain_mIoU  20.2  mIoU  20.0
+ADVR-P_car           car_IoU   0.0  retain_mIoU  19.8  mIoU  19.6
+wrote results/seg/utility_car.json

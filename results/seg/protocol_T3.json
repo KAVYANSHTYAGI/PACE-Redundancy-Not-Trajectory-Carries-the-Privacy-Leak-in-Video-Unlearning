@@ -1,0 +1,173 @@
+{
+  "oracle_FLOOR": {
+    "ordered": {
+      "attacker_AP": 26.99,
+      "attacker_AP_std": 0.18,
+      "attacker_AUC": 72.43,
+      "attacker_AUC_std": 0.08,
+      "attacker_IoU": 0.51,
+      "attacker_IoU_best": 19.99,
+      "attacker_pos_rate": 0.13,
+      "traj_consistency": 0.0,
+      "final_train_loss": 0.34
+    },
+    "shuffled": {
+      "attacker_AP": 26.77,
+      "attacker_AP_std": 0.14,
+      "attacker_AUC": 72.87,
+      "attacker_AUC_std": 0.53,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 20.61,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": NaN,
+      "final_train_loss": 0.35
+    },
+    "synergy_AP": 0.22,
+    "frame": {
+      "attacker_AP": 24.73,
+      "attacker_AUC": 74.77,
+      "attacker_IoU": 20.21,
+      "attacker_IoU_best": 20.91,
+      "attacker_pos_rate": 12.29
+    }
+  },
+  "original": {
+    "ordered": {
+      "attacker_AP": 94.94,
+      "attacker_AP_std": 0.02,
+      "attacker_AUC": 99.31,
+      "attacker_AUC_std": 0.02,
+      "attacker_IoU": 83.35,
+      "attacker_IoU_best": 83.78,
+      "attacker_pos_rate": 12.47,
+      "traj_consistency": 87.6,
+      "final_train_loss": 0.04
+    },
+    "shuffled": {
+      "attacker_AP": 94.94,
+      "attacker_AP_std": 0.28,
+      "attacker_AUC": 99.27,
+      "attacker_AUC_std": 0.03,
+      "attacker_IoU": 83.23,
+      "attacker_IoU_best": 83.83,
+      "attacker_pos_rate": 12.52,
+      "traj_consistency": 86.49,
+      "final_train_loss": 0.04
+    },
+    "synergy_AP": 0.0,
+    "frame": {
+      "attacker_AP": 91.56,
+      "attacker_AUC": 98.94,
+      "attacker_IoU": 76.83,
+      "attacker_IoU_best": 77.07,
+      "attacker_pos_rate": 10.18
+    }
+  },
+  "ADVR": {
+    "ordered": {
+      "attacker_AP": 45.26,
+      "attacker_AP_std": 0.11,
+      "attacker_AUC": 82.69,
+      "attacker_AUC_std": 0.17,
+      "attacker_IoU": 33.47,
+      "attacker_IoU_best": 33.72,
+      "attacker_pos_rate": 13.39,
+      "traj_consistency": 94.76,
+      "final_train_loss": 0.28
+    },
+    "shuffled": {
+      "attacker_AP": 45.35,
+      "attacker_AP_std": 0.15,
+      "attacker_AUC": 83.01,
+      "attacker_AUC_std": 0.2,
+      "attacker_IoU": 33.2,
+      "attacker_IoU_best": 33.4,
+      "attacker_pos_rate": 14.9,
+      "traj_consistency": 94.63,
+      "final_train_loss": 0.27
+    },
+    "synergy_AP": -0.09,
+    "frame": {
+      "attacker_AP": 29.44,
+      "attacker_AUC": 81.7,
+      "attacker_IoU": 26.56,
+      "attacker_IoU_best": 26.59,
+      "attacker_pos_rate": 16.8
+    }
+  },
+  "ADVR-T": {
+    "ordered": {
+      "attacker_AP": 21.26,
+      "attacker_AP_std": 0.61,
+      "attacker_AUC": 69.81,
+      "attacker_AUC_std": 0.03,
+      "attacker_IoU": 0.0,
+      "attacker_IoU_best": 17.92,
+      "attacker_pos_rate": 0.0,
+      "traj_consistency": NaN,
+      "final_train_loss": 0.38
+    },
+    "shuffled": {
+      "attacker_AP": 22.62,
+      "attacker_AP_std": 0.64,
+      "attacker_AUC": 70.01,
+      "attacker_AUC_std": 0.5,
+      "attacker_IoU": 1.78,
+      "attacker_IoU_best": 17.98,
+      "attacker_pos_rate": 0.55,
+      "traj_consistency": 74.59,
+      "final_train_loss": 0.34
+    },
+    "synergy_AP": -1.36,
+    "frame": {
+      "attacker_AP": 16.42,
+      "attacker_AUC": 68.24,
+      "attacker_IoU": 11.98,
+      "attacker_IoU_best": 15.39,
+      "attacker_pos_rate": 14.86
+    }
+  },
+  "bl_SalUn_s1": {
+    "ordered": {
+      "attacker_AP": 84.74,
+      "attacker_AP_std": 0.03,
+      "attacker_AUC": 97.61,
+      "attacker_AUC_std": 0.11,
+      "attacker_IoU": 66.68,
+      "attacker_IoU_best": 68.05,
+      "attacker_pos_rate": 13.94,
+      "traj_consistency": 91.22,
+      "final_train_loss": 0.12
+    },
+    "shuffled": {
+      "attacker_AP": 83.54,
+      "attacker_AP_std": 0.49,
+      "attacker_AUC": 97.44,
+      "attacker_AUC_std": 0.07,
+      "attacker_IoU": 66.91,
+      "attacker_IoU_best": 67.7,
+      "attacker_pos_rate": 13.77,
+      "traj_consistency": 92.66,
+      "final_train_loss": 0.12
+    },
+    "synergy_AP": 1.2,
+    "frame": {
+      "attacker_AP": 49.27,
+      "attacker_AUC": 92.56,
+      "attacker_IoU": 47.07,
+      "attacker_IoU_best": 47.21,
+      "attacker_pos_rate": 15.09
+    }
+  },
+  "_config": {
+    "clip_len": 3,
+    "steps": 500,
+    "eff_clips": 4,
+    "phys_bs": 4,
+    "accum": 1,
+    "n_trials": 2,
+    "n_eval_clips": 1000,
+    "n_train_clips": 6000,
+    "temporal_kind": "conv3d"
+  }
+}

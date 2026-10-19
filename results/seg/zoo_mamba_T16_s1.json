@@ -1,0 +1,65 @@
+{
+  "oracle_FLOOR": {
+    "ordered": {
+      "attacker_AP": 29.48,
+      "attacker_AP_std": 0.46,
+      "attacker_AUC": 72.6,
+      "attacker_AUC_std": 1.64,
+      "attacker_IoU": 10.88,
+      "attacker_IoU_best": 21.28,
+      "attacker_pos_rate": 3.65,
+      "traj_consistency": 71.75,
+      "final_train_loss": 0.34
+    },
+    "shuffled": {
+      "attacker_AP": 28.62,
+      "attacker_AP_std": 2.56,
+      "attacker_AUC": 71.04,
+      "attacker_AUC_std": 2.16,
+      "attacker_IoU": 15.65,
+      "attacker_IoU_best": 20.82,
+      "attacker_pos_rate": 7.7,
+      "traj_consistency": 64.85,
+      "final_train_loss": 0.35
+    },
+    "synergy_AP": 0.86
+  },
+  "original": {
+    "ordered": {
+      "attacker_AP": 93.2,
+      "attacker_AP_std": 0.04,
+      "attacker_AUC": 99.1,
+      "attacker_AUC_std": 0.03,
+      "attacker_IoU": 81.58,
+      "attacker_IoU_best": 81.89,
+      "attacker_pos_rate": 12.83,
+      "traj_consistency": 89.92,
+      "final_train_loss": 0.05
+    },
+    "shuffled": {
+      "attacker_AP": 93.21,
+      "attacker_AP_std": 0.21,
+      "attacker_AUC": 99.1,
+      "attacker_AUC_std": 0.03,
+      "attacker_IoU": 81.15,
+      "attacker_IoU_best": 81.84,
+      "attacker_pos_rate": 13.17,
+      "traj_consistency": 72.79,
+      "final_train_loss": 0.04
+    },
+    "synergy_AP": -0.01
+  },
+  "_config": {
+    "clip_len": 16,
+    "frame_stride": 1,
+    "span_seconds": 1.07,
+    "steps": 500,
+    "eff_clips": 4,
+    "phys_bs": 1,
+    "accum": 4,
+    "n_trials": 2,
+    "n_eval_clips": 800,
+    "n_train_clips": 4000,
+    "temporal_kind": "mamba"
+  }
+}
