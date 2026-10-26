@@ -3,6 +3,8 @@
 Code and experiment logs for **"Beyond the Frame: Redundancy,
 Not Trajectory, Carries the Privacy Leak in Video Unlearning"** (WACV 2027).
 
+Paper: [arXiv:2610.27982](https://arxiv.org/abs/2610.27982) ([PDF](https://arxiv.org/pdf/2610.27982))
+
 Project page: https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/
 
 ## TL;DR
@@ -220,6 +222,20 @@ orchestration bug hit during this project (documented in `EXPERIMENTS.md`)
 came from exactly that mistake.
 
 ## Citation
+
+```bibtex
+@misc{tyagi2026beyond,
+  title         = {Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning},
+  author        = {Tyagi, Kavyansh and Russo, Paolo},
+  year          = {2026},
+  eprint        = {2610.27982},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2610.27982}
+}
+```
+
+The conference version (WACV 2027) will be cited as:
 
 ```bibtex
 @inproceedings{tyagi2027beyond,

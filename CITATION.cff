@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or the results, please cite the paper."
+title: "Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning"
+authors:
+  - family-names: Tyagi
+    given-names: Kavyansh
+  - family-names: Russo
+    given-names: Paolo
+license: MIT
+repository-code: "https://github.com/KAVYANSHTYAGI/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning"
+url: "https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/"
+preferred-citation:
+  type: article
+  title: "Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning"
+  authors:
+    - family-names: Tyagi
+      given-names: Kavyansh
+    - family-names: Russo
+      given-names: Paolo
+  journal: "arXiv preprint arXiv:2610.27982"
+  year: 2026
+  url: "https://arxiv.org/abs/2610.27982"
