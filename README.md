@@ -1,5 +1,10 @@
 # PACE: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning
 
+[![arXiv](https://img.shields.io/badge/arXiv-2610.27982-b31b1b.svg)](https://arxiv.org/abs/2610.27982)
+[![Project page](https://img.shields.io/badge/Project-page-3273dc.svg)](https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/)
+[![WACV 2027](https://img.shields.io/badge/WACV-2027-444.svg)](https://arxiv.org/abs/2610.27982)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Code and experiment logs for **"Beyond the Frame: Redundancy,
 Not Trajectory, Carries the Privacy Leak in Video Unlearning"** (WACV 2027).
 

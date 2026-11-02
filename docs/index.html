@@ -8,7 +8,20 @@
   <meta property="og:title" content="Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning">
   <meta property="og:description" content="Averaging a few frames recovers an object that a video model appears to have forgotten. PACE removes what averaging finds.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/teaser.png">
+  <meta property="og:image" content="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/assets/teaser.png">
+  <meta property="og:url" content="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/">
+  <link rel="canonical" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning">
+  <meta name="twitter:description" content="Averaging a few frames recovers an object that a video model appears to have forgotten. PACE removes what averaging finds.">
+  <meta name="twitter:image" content="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/assets/teaser.png">
+  <meta name="citation_title" content="Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning">
+  <meta name="citation_author" content="Tyagi, Kavyansh">
+  <meta name="citation_author" content="Russo, Paolo">
+  <meta name="citation_publication_date" content="2026/10/20">
+  <meta name="citation_arxiv_id" content="2610.27982">
+  <meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2610.27982">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2610.27982">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%273%27 fill=%27%23363636%27/%3E%3Crect x=%274%27 y=%274%27 width=%278%27 height=%278%27 fill=%27%23fff%27/%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <style>
@@ -161,14 +174,22 @@
   <div class="container">
     <h1 class="publication-title">Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning</h1>
     <div class="authors"><a href="https://kavyanshtyagi.github.io/">Kavyansh Tyagi</a>, <a href="https://www.paolorusso.org/">Paolo Russo</a></div>
-    <div class="venue">WACV 2027</div>
+    <div class="venue">WACV 2027 &middot; <a href="https://arxiv.org/abs/2610.27982">arXiv:2610.27982</a></div>
     <div class="links">
-      <a class="button" href="https://arxiv.org/pdf/2610.27982">Paper</a>
+      <a class="button" href="https://arxiv.org/pdf/2610.27982">Paper (PDF)</a>
       <a class="button" href="https://arxiv.org/abs/2610.27982">arXiv</a>
       <a class="button" href="https://github.com/KAVYANSHTYAGI/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning">Code</a>
+      <a class="button" href="#bibtex">BibTeX</a>
     </div>
   </div>
 </div>
+
+<section>
+  <div class="container">
+    <h2>Abstract</h2>
+    <div class="narrow"><p>Class unlearning for video segmentation aims to ensure that a removed category cannot be reconstructed from a deployed model's outputs. Current leakage evaluation algorithms inspect one frame at a time, and we show that this understates leakage by a wide margin: an attacker that averages a model's output field over a two-second clip recovers the forgotten class from every method we evaluate on VSPW and most on Virtual KITTI 2, including models whose per-frame predictions are visually indistinguishable from a retrain oracle (a model trained from scratch without the forgotten class). We attribute the recoverable signal to cross-frame redundancy rather than object trajectory, establish this with a time-shuffled control that leaves leakage intact, and introduce PACE, an unlearning method that suppresses redundancy directly using an exactly permutation-invariant pooled adversarial discriminator and a two-sided temporal consistency objective. Across VSPW and Virtual KITTI 2, PACE lowers pooled attacker AP to 18.79 (person) and 12.10 (car) on VSPW and 9.11 (car) on Virtual KITTI 2, achieving on the latter the strongest suppression among verdict-safe methods retaining usable utility, while retaining 19.8 mIoU on VSPW car against at most 8.3 for any baseline achieving comparable erasure.</p></div>
+  </div>
+</section>
 
 <section>
   <div class="container">
@@ -376,7 +397,7 @@
 
 <section>
   <div class="container narrow">
-    <h2>BibTeX</h2>
+    <h2 id="bibtex">BibTeX</h2>
     <pre><code>@misc{tyagi2026beyond,
   title         = {Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning},
   author        = {Tyagi, Kavyansh and Russo, Paolo},
